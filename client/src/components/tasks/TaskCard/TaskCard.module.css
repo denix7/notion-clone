@@ -1,0 +1,95 @@
+/*Cards Project*/
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card{
+    background-color: var(--bg-secondary-color);
+    padding: 8px 10px 8px;
+    margin: 12px;
+    width: 350px;
+    height: 150px;
+    transition: .2s;
+  }
+  
+  .card:hover{
+    /* background-color: var(--hover-gris); */
+    background-color: #454E56;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px 0 #3F4447;
+  }
+  
+  .card .title{
+    padding: 8px;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .card .title:hover{
+    background: linear-gradient(90deg,#ff8a00,#e52e71);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .date{
+    padding: 8px;
+    align-items: left;
+    /* font-size: var(--font-size-md); */
+    /* opacity: var(--opacity); */
+    color: rgb(141, 131, 131);
+  }
+
+
+
+
+  /* TAGS */
+  :root{
+    --color-tag:#F0DB4F;
+    --color-hover:  rgb(255, 104, 104);
+  }
+  
+  .container{
+      margin: 35px 5px 0 5px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      overflow-x: hidden;
+  }
+  
+  .tag{
+      background-color: var(--color-tag);
+      margin: 15px 5px 15px 0;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 12px;
+      border: none;
+      transition: .4s
+  }
+  
+  .tag:hover{
+      background-color: var(--color-hover);
+      box-shadow: 0 4px 8px 0 #3F4447;
+      transform: scale(1.1);
+      overflow: hidden;
+      transform: translateY(-5px);
+  }
+  
+
+  .icons{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .icons span{
+      margin: 5px;
+  }
+
+  .show{
+      display: flex;
+      justify-content: flex-end;
+      font-size: 12px;
+  }

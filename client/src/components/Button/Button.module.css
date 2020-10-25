@@ -1,0 +1,30 @@
+button {
+    border: none;
+    padding: 16px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.container{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+button.red {
+    background-color: red;
+    color: white;
+    margin: 5px;
+}
+
+button.red:hover {
+    background-color: salmon;
+    color: black;
+}
+
+
+
+button:hover {
+    background-color: lightgreen;
+    color: black;
+}
