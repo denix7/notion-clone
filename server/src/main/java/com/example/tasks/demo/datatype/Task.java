@@ -1,60 +1,22 @@
-package com.example.tasks.demo.model;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.example.tasks.demo.datatype;
 
-import javax.persistence.*;
+import com.example.tasks.demo.model.Priority;
 import org.hibernate.annotations.Type;
-import java.io.Serializable;
 
-import java.util.UUID;
+import javax.persistence.Column;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Entity
-@Table(name="task")
-public class Task implements Serializable{
-
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+public class Task {
     private int id;
-    @Column(name="description")
     private String description;
-    @Column(name="status")
     private String status;
-
-//    @Id
-//    @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(
-//            name = "UUID",
-//            strategy = "org.hibernate.id.UUIDGenerator"
-//    )
-//    @Column(name = "uuid3", updatable = false, nullable = false)
-
-    @Type(type = "uuid-char")
     private UUID uuid;
-    @Column(name = "entry")
     private LocalDateTime entry;
-    @Column(name = "start")
     private LocalDateTime start;
-    @Column(name = "end")
     private LocalDateTime end;
-    @Column(name = "due")
     private String due;
-    @Column(name = "priority")
     private Priority priority;
-//    private ArrayList<UUID> depends;
-//    private String tag;
-
-    public Task () {
-
-    }
-
-    public Task(
-                @JsonProperty("description") String description,
-                @JsonProperty("status") String status) {
-        this.id = id;
-        this.description = description;
-        this.status = status;
-    }
 
     public int getId() {
         return id;
@@ -62,14 +24,6 @@ public class Task implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
     }
 
     public String getDescription() {
@@ -86,6 +40,14 @@ public class Task implements Serializable{
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public LocalDateTime getEntry() {
