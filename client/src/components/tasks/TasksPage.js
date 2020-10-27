@@ -5,6 +5,7 @@ import { MenuTasks } from './MenuTasks';
 import { TagsSlide } from '../shared/TagsSlide/TagsSlide';
 import { useParams } from 'react-router-dom';
 import { getProjectById } from '../../selectors/getProjectById';
+import { CreateTask } from './CreateTask';
 
 export const TasksPage = () => {
 
@@ -21,6 +22,7 @@ export const TasksPage = () => {
     return (
         <div className="container">
             <MenuTasks/>
+            <CreateTask/>
             <TagsSlide/>
             <Tasks tasks={project.tasks}/>
         </div>
