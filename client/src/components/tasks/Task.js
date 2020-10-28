@@ -12,7 +12,7 @@ export const Task = () => {
             <div className="content" id="content-description-task">
                 <div className="modal-header">
                     <div>
-                        <h2>{task.name}</h2>
+                        <h2>{task?.name}</h2>
                         <input className="input-edit" id="input-description" type="text" value="{task.name}"></input>
             </div>
 
@@ -23,7 +23,7 @@ export const Task = () => {
                                 <span><i className="fas fa-clock"></i></span>
                                 Created
                 </div>
-                            <div className="item-value">{task.created_at}</div>
+                            <div className="item-value">{task?.created_at}</div>
                         </div>
                         <div className="modal-item">
                             <div className="item-property">
@@ -32,7 +32,7 @@ export const Task = () => {
                 </div>
                             <div className="item-value">
                                 <select id="status">
-                                    <option selected>{task.status}</option>
+                                    <option selected>{task?.status}</option>
                                 </select>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ export const Task = () => {
                 </div>
                             <div>
                                 <select id="priority">
-                                    <option selected>{task.priority}</option>
+                                    <option selected>{task?.priority}</option>
                                 </select>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ export const Task = () => {
                                 <span><i className="fas fa-calendar"></i></span>
                                 Due
                 </div>
-                            <input type="date" id="input-date" className="item-value input-edit" value={task.due}></input>
+                            <input type="date" id="input-date" className="item-value input-edit" value={task?.due}></input>
                         </div>
                         <button type="submit" id="btn-update-task" className="btn btn-primary rounded py-3">Update</button>
                     </div>

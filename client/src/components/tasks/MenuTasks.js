@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputSearch } from '../shared/InputSearch/InputSearch';
 import { InputSearchFull } from '../shared/InputSearchFull/InputSearchFull';
+import { Link } from 'react-router-dom';
 
 export const MenuTasks = () => {
     return (
@@ -40,7 +41,7 @@ export const MenuTasks = () => {
                             <li className="divider"></li>
                         </ul>
                     </label>
-                    <a className="btn btn-primary rounded" id="btn-add"><span><i className="fas fa-plus-circle"></i></span> Add Project</a>
+                    <Link to='/tasks/add' className="btn btn-primary rounded" id="btn-add"><span><i className="fas fa-plus-circle"></i></span> Add Project</Link>
                 </div>
             </div>
         </div>

@@ -25,6 +25,7 @@ export const AppRouter = () => {
                     <Route exact path="/projects/:projectId/tasks" component={TasksPage}/>
                     <Route exact path="/projects/:projectId/tasks/:taskId" component={Task}/>
                     <Route exact path="/tasks" component={TasksPage}/>
+                    <Route exact path="/tasks/add" component={Task}/>
                     <Route exact path="/tasks/:taskId" component={Task}/>
                     <Route exact path="/tags" component={TagsPage}/>
 

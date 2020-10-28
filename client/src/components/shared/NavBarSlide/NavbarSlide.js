@@ -15,7 +15,7 @@ export const NavbarSlide = () => {
                        data.map( (project) => {
                            return (
                             <li className="darkerli" key={project.id}>
-                                <Link to={`./projects/${project.id}/tasks`}>
+                                <Link to={`/projects/${project.id}/tasks`}>
                                     <i className="fa fa-rocket fa-lg"></i>
                                     <span className="nav-text">{project.name}</span>
                                 </Link>
