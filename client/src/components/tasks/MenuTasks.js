@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { InputSearch } from '../shared/InputSearch/InputSearch';
+import { InputSearch } from '../Shared/InputSearch/InputSearch';
 
 export const MenuTasks = () => {
   return (

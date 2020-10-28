@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Tasks } from './Tasks/Tasks';
 import data from '../../data/tasksData';
 import { MenuTasks } from './MenuTasks';
-import { TagsSlide } from '../shared/TagsSlide/TagsSlide';
+import { TagsSlide } from '../Shared/TagsSlide/TagsSlide';
 import { getProjectById } from '../../selectors/getProjectById';
 import { CreateTask } from './CreateTask';
 

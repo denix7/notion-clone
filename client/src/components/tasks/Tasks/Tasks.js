@@ -13,7 +13,11 @@ export const Tasks = ({ tasks }) => {
 };
 
 Tasks.propTypes = {
-  tasks: PropTypes.arrayOf,
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+    })
+  ),
 };
 
 Tasks.defaultProps = {

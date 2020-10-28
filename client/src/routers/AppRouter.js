@@ -5,12 +5,12 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import ProjectsPage from '../components/projects/ProjectsPage';
-import { TasksPage } from '../components/tasks/TasksPage';
-import { Navbar } from '../components/shared/Navbar/Navbar';
-import { Task } from '../components/tasks/Task';
-import { TagsPage } from '../components/tags/TagsPage';
-import { NavbarSlide } from '../components/shared/NavBarSlide/NavbarSlide';
+import ProjectsPage from '../components/Projects/ProjectsPage';
+import { TasksPage } from '../components/Tasks/TasksPage';
+import { Navbar } from '../components/Shared/Navbar/Navbar';
+import { Task } from '../components/Tasks/Task';
+import { TagsPage } from '../components/Tags/TagsPage';
+import { NavbarSlide } from '../components/Shared/NavBarSlide/NavbarSlide';
 
 export const AppRouter = () => {
   return (
