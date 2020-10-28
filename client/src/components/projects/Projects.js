@@ -1,16 +1,15 @@
-import React from 'react'
-import { ProjectItem } from './ProjectItem';
+import React from 'react';
+import ProjectItem from './ProjectItem';
 import data from '../../data/projectsData';
 
-export const Projects = () => {
+const Projects = () => {
+  return (
+    <div className="card-container" id="projects">
+      {data.map((project) => {
+        return <ProjectItem key={project.id} project={project} />;
+      })}
+    </div>
+  );
+};
 
-    return (
-        <div className="card-container" id="projects">
-            {
-                data.map( (project)=> {
-                    return <ProjectItem key={project.id} project={project}/>
-                })
-            }
-        </div>
-    )
-}
+export default Projects;

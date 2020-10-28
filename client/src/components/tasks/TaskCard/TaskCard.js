@@ -1,54 +1,73 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import style from '../TaskCard/TaskCard.module.css'
+import { PropTypes } from 'prop-types';
+import style from './TaskCard.module.css';
 
-export const TaskCard = ({task}) => {
-    return (
-        <div>
-            <Link className="btn" to={`./tasks/${task.id}`}>
-                <div className={style.card}>
-                    <div className="flex-between">
-                        <div className={style.title}>
-                            {task.name}
-                        </div>
-                        <div>
-                            <i id="delete" className="text-red fas fa-trash"></i>
-                        </div>
-                    </div>
-                    <div className={style.date}>
-                        {task.created_at}
-                    </div>
+export const TaskCard = ({ task }) => {
+  return (
+    <div>
+      <Link className="btn" to={`./tasks/${task.id}`}>
+        <div className={style.card}>
+          <div className="flex-between">
+            <div className={style.title}>{task.name}</div>
+            <div>
+              <i id="delete" className="text-red fas fa-trash" />
+            </div>
+          </div>
+          <div className={style.date}>{task.created_at}</div>
 
-                    <div className={style.tags}>
-                        <div className={style.container}>
-                            <div className="flex">
-                                <Link to='/tags'>
-                                    <div className={style.tag}>
-                                        <span>#football</span>
-                                    </div>
-                                </Link>
-                                
-                                <Link to='/tags'>
-                                    <div className={style.tag}>
-                                        <span>#football</span>
-                                    </div>
-                                </Link>
-                                
-                                <Link to='/tags'>
-                                    <div className={style.tag}>
-                                        <span>#football</span>
-                                    </div>
-                                </Link>
-                            </div>
-                            <div className={style.icons}>
-                                <span>5 <i class="fas fa-comment-alt"></i></span>
-                                <span><i class="fas fa-heart"></i></span>
-                                <span><i class="fas fa-clock"></i></span>
-                            </div>
-                        </div>
+          <div className={style.tags}>
+            <div className={style.container}>
+              <div className="flex">
+                <span>
+                  <Link to="/tags">
+                    <div className={style.tag}>
+                      <span>#football</span>
                     </div>
-                </div>
-            </Link>
+                  </Link>
+                </span>
+                <Link to="/tags">
+                  <div className={style.tag}>
+                    <span>#football</span>
+                  </div>
+                </Link>
+                <span>
+                  <Link to="/tags">
+                    <div className={style.tag}>
+                      <span>#football</span>
+                    </div>
+                  </Link>
+                </span>
+              </div>
+              <div className={style.icons}>
+                <span>
+                  5 <i className="fas fa-comment-alt" />
+                </span>
+                <span>
+                  <i className="fas fa-heart" />
+                </span>
+                <span>
+                  <i className="fas fa-clock" />
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-    )
-}
+      </Link>
+    </div>
+  );
+};
+
+TaskCard.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    created_at: PropTypes.string,
+  }),
+};
+
+TaskCard.defaultProps = {
+  task: {},
+};
+
+export default TaskCard;
