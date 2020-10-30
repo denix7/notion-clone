@@ -11,6 +11,8 @@ import { Navbar } from '../components/Shared/Navbar/Navbar';
 import { Task } from '../components/Tasks/Task';
 import { TagsPage } from '../components/Tags/TagsPage';
 import { NavbarSlide } from '../components/Shared/NavBarSlide/NavbarSlide';
+import { CreateProject } from '../components/Projects/CreateProject';
+import { HomePage } from '../components/Shared/HomePage/HomePage';
 
 export const AppRouter = () => {
   return (
@@ -21,10 +23,14 @@ export const AppRouter = () => {
         <NavbarSlide />
 
         <Switch>
-          {/* <Route exact path="/" component={ProjectsPage}/> */}
+          <Route exact path="/" component={HomePage} />
+
           <Route exact path="/projects" component={ProjectsPage} />
-          <Route exact path="/projects/add" component={ProjectsPage} />
+
+          <Route exact path="/projects/add" component={CreateProject} />
+
           <Route exact path="/projects/:projectId" component={TasksPage} />
+
           <Route
             exact
             path="/projects/:projectId/tasks"
@@ -35,9 +41,13 @@ export const AppRouter = () => {
             path="/projects/:projectId/tasks/:taskId"
             component={Task}
           />
+
           <Route exact path="/tasks" component={TasksPage} />
+
           <Route exact path="/tasks/add" component={Task} />
+
           <Route exact path="/tasks/:taskId" component={Task} />
+
           <Route exact path="/tags" component={TagsPage} />
 
           <Redirect to="/" />

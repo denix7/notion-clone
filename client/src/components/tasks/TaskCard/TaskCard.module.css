@@ -93,3 +93,9 @@
       justify-content: flex-end;
       font-size: 12px;
   }
+
+  .buttonDelete{
+    float: right;
+    margin-right: 25px;
+    margin-top: 5px;
+  }

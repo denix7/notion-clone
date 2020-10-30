@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Tasks } from './Tasks/Tasks';
-import data from '../../data/tasksData';
 import { MenuTasks } from './MenuTasks';
 import { TagsSlide } from '../Shared/TagsSlide/TagsSlide';
-import { getProjectById } from '../../selectors/getProjectById';
-import { CreateTask } from './CreateTask';
+// import data from '../../data/tasksData';
 
 export const TasksPage = () => {
   const { projectId } = useParams();
+  const projects = useSelector((state) => state.project);
+  const project = projects.find((item) => item.id === projectId);
 
-  let project = {};
-  if (projectId !== undefined) {
-    project = getProjectById(projectId);
-  } else {
-    project.tasks = data;
-  }
+  const data = [...project.tasks];
+
+  const [tasksFilters, setTaskFilters] = useState(data);
+
+  let newTasks = [];
+  const filterItems = (status) => {
+    if (status === 'all') {
+      setTaskFilters(data);
+      return;
+    }
+    newTasks = data.filter((item) => item.status === status);
+    setTaskFilters(newTasks);
+  };
 
   return (
     <div className="container">
-      <MenuTasks />
-      <CreateTask />
+      <MenuTasks filterItems={filterItems} />
       <TagsSlide />
-      <Tasks tasks={project.tasks} />
+
+      <Tasks tasks={data} filtered={tasksFilters} />
     </div>
   );
 };

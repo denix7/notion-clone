@@ -914,27 +914,24 @@ text-transform: uppercase;
 
 .darkerli
 {
-/* background-color:#ededed; */
-text-transform:capitalize;  
+  text-transform:capitalize;  
 }
 
 .darkerlishadow
 {
-/* background-color:#ededed; */
-text-transform:capitalize;  
--webkit-box-shadow: inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
--moz-box-shadow:    inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
-box-shadow:         inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+  text-transform:capitalize;  
+  -webkit-box-shadow: inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+  -moz-box-shadow:    inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
+  box-shadow:         inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
 }
 
 
 .darkerlishadowdown
 {
-/* background-color:#ededed; */
-text-transform:capitalize;  
--webkit-box-shadow: inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
--moz-box-shadow:    inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
-box-shadow:         inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+  text-transform:capitalize;  
+  -webkit-box-shadow: inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+  -moz-box-shadow:    inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
+  box-shadow:         inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
 }
 
 /* Darker element side menu End*/
@@ -977,12 +974,6 @@ box-shadow:         inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
 
 
 
-/* ButtonTest */
-button {
-  background-color: yellow;
-}
-
-
 
 /* Scroll */
 body::-webkit-scrollbar{
@@ -1013,69 +1004,18 @@ body::-webkit-scrollbar-thumb {
 
 
 
-/* INPUT FULL */
-/* The overlay effect with black background */
-.overlay {
-  height: 100%;
-  width: 100%;
-  display: none;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9); /* Black with a little bit see-through */
+
+
+
+
+
+.card-delete-project{
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
 }
 
-/* The content */
-.overlay-content {
-  position: relative;
-  top: 46%;
-  width: 80%;
-  text-align: center;
-  margin-top: 30px;
-  margin: auto;
-}
-
-/* Close button */
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  cursor: pointer;
-  color: white;
-}
-
-.overlay .closebtn:hover {
-  color: #ccc;
-}
-
-/* Style the search field */
-.overlay input[type=text] {
-  padding: 15px;
-  font-size: 17px;
-  border: none;
-  float: left;
-  width: 80%;
-  background: black;
-}
-
-.overlay input[type=text]:hover {
-  background: #f1f1f1;
-}
-
-/* Style the submit button */
-.overlay button {
-  float: left;
-  width: 20%;
-  padding: 15px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.overlay button:hover {
-  background: #bbb;
+.menu-rigth{
+  display: flex;
+  justify-content: right;
 }

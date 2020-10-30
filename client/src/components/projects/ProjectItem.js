@@ -1,17 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteProject } from '../../actions/project';
 
 const ProjectItem = ({ project }) => {
+  const dispatch = useDispatch();
+
+  const remove = (id) => {
+    dispatch(deleteProject(id));
+  };
+
   return (
     <div>
+      <a
+        role="button"
+        className="card-delete-project"
+        onClick={() => remove(project.id)}
+        onKeyDown=""
+      >
+        <span>
+          <i id="delete" className="text-red fas fa-trash" />
+        </span>
+      </a>
       <Link to={`./projects/${project.id}/tasks`}>
         <div className="card">
           <div className="flex-between">
             <div className="card-title">{project.name}</div>
-            <div>
-              <i id="delete" className="text-red fas fa-trash" />
-            </div>
           </div>
           <div className="card-date">{project.date}</div>
         </div>

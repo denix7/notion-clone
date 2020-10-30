@@ -17,12 +17,12 @@ export const Navbar = () => {
             <li className="title">
               <NavLink activeClassName="active" exact to="/projects">
                 Projects
-              </NavLink>{' '}
+              </NavLink>
             </li>
             <li className="title">
-              <NavLink activeClassName="active" exact to="/tasks">
-                Tasks
-              </NavLink>{' '}
+              <NavLink activeClassName="active" exact to="/">
+                Stats
+              </NavLink>
             </li>
             <label htmlFor="options" className="dropdown">
               <div className="dd-button">

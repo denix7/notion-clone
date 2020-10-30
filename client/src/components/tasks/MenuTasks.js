@@ -1,10 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import { InputSearch } from '../Shared/InputSearch/InputSearch';
 
-export const MenuTasks = () => {
+export const MenuTasks = ({ filterItems }) => {
   return (
     <div>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => filterItems('Pending')}
+      >
+        Pending
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => filterItems('Doing')}
+      >
+        Doing
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => filterItems('Done')}
+      >
+        Done
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => filterItems('')}
+      >
+        All
+      </button>
       <div className="menu">
         <div>
           <InputSearch />
@@ -43,20 +71,18 @@ export const MenuTasks = () => {
               <li className="divider" />
             </ul>
           </label>
-          <Link
-            to="/tasks/add"
-            className="btn btn-primary rounded"
-            id="btn-add"
-          >
-            <span>
-              <i className="fas fa-plus-circle" />
-            </span>
-            Add Project
-          </Link>
         </div>
       </div>
     </div>
   );
+};
+
+MenuTasks.propTypes = {
+  filterItems: PropTypes.arrayOf,
+};
+
+MenuTasks.defaultProps = {
+  filterItems: {},
 };
 
 export default MenuTasks;

@@ -1,18 +1,28 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addTask, deleteTask } from '../../actions/task';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addTask } from '../../actions/project';
 
 export const CreateTask = () => {
-  const tasks = useSelector((state) => state.task);
+  const [inputValue, setInputValue] = useState('');
+
+  // const projects = useSelector((state) => state.project);
+  const { projectId } = useParams();
+
+  // const tasks2 = projects.find((item) => item.id === projectId).tasks;
   const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   const save = (e) => {
     e.preventDefault();
-    dispatch(addTask(e.target.task.value));
-  };
 
-  const remove = (id) => {
-    dispatch(deleteTask(id));
+    if (inputValue.trim().length > 3) {
+      dispatch(addTask(projectId, e.target.task.value));
+      setInputValue(' ');
+    }
   };
 
   return (
@@ -22,24 +32,17 @@ export const CreateTask = () => {
           save(e);
         }}
       >
-        <input type="text" name="task" placeholder="New task" />
-        <button type="button">Save</button>
+        <input
+          type="text"
+          name="task"
+          value={inputValue}
+          placeholder="New task"
+          onChange={handleInputChange}
+        />
+        <button className="btn btn-primary" type="submit">
+          Save
+        </button>
       </form>
-
-      <div>
-        <ul>
-          {tasks.map((task) => {
-            return (
-              <li key={task.id}>
-                {task.value}{' '}
-                <button type="button" onClick={() => remove(task.id)}>
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
     </div>
   );
 };

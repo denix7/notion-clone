@@ -33,6 +33,9 @@ module.exports = {
     "rules": {
         "prettier/prettier": "error",
         "react/jsx-filename-extension": [0],
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "jsx-a11y/anchor-is-valid": 0,
+        'jsx-a11y/no-onchange': 'off',
+        'jsx-a11y/interactive-supports-focus' : 'warn'
     }
 };

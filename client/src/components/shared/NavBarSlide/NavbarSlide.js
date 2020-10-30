@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import data from '../../../data/projectsData';
+import { useSelector } from 'react-redux';
 
 export const NavbarSlide = () => {
+  const projects = useSelector((state) => state.project);
+
   return (
     <div>
       <nav className="main-menu">
         <div className="settings" />
         <div className="scrollbar" id="style-1">
           <ul>
-            {data.map((project) => {
+            {projects.map((project) => {
               return (
                 <li className="darkerli" key={project.id}>
                   <Link to={`/projects/${project.id}/tasks`}>
