@@ -47,7 +47,7 @@ export const TaskPrint = () => {
 
   const tasks = [...project.tasks];
 
-  const state = { data: "helo" }
+  // const state = { data: "helo" }
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -60,7 +60,7 @@ export const TaskPrint = () => {
           <i className="fas fa-download"></i>Download
         </button>
       </div>
-      <ComponentToPrint dataFromParent={state} tasks={tasks} ref={componentRef} />
+      <ComponentToPrint dataFromParent='state' tasks={tasks} ref={componentRef} />
     </>
   );
 };
@@ -68,12 +68,17 @@ export const TaskPrint = () => {
 ComponentToPrint.propTypes = {
   dataFromParent: PropTypes.string,
   tasks: PropTypes.arrayOf,
-};
-
+}
 
 ComponentToPrint.defaultProps = {
   dataFromParent: '',
-  tasks: [],
+  tasks: []
+}
+
+TaskPrint.propTypes = {
+};
+
+TaskPrint.defaultProps = {
 };
 
 export default TaskPrint;
