@@ -1,42 +1,48 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Link, useParams } from 'react-router-dom';
 import { InputSearch } from '../Shared/InputSearch/InputSearch';
 
 export const MenuTasks = ({ filterItems }) => {
+  const { projectId } = useParams();
+
   return (
     <div>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => filterItems('Pending')}
-      >
-        Pending
-      </button>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => filterItems('Doing')}
-      >
-        Doing
-      </button>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => filterItems('Done')}
-      >
-        Done
-      </button>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => filterItems('')}
-      >
-        All
-      </button>
+      <InputSearch />
+
       <div className="menu">
         <div>
-          <InputSearch />
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => filterItems('Pending')}
+          >
+            Pending
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => filterItems('Doing')}
+          >
+            Doing
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => filterItems('Done')}
+          >
+            Done
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => filterItems('')}
+          >
+            All
+          </button>
         </div>
+
+
         <div>
           <label htmlFor="filter" className="dropdown">
             <div className="dd-button">
@@ -71,6 +77,16 @@ export const MenuTasks = ({ filterItems }) => {
               <li className="divider" />
             </ul>
           </label>
+            <Link
+              to={`/projects/${projectId}/export`}
+              className="btn btn-primary rounded"
+              id="btn-add"
+            >
+              <span>
+                <i className="fas fa-plus-circle" />
+              </span>
+              Export
+            </Link>
         </div>
       </div>
     </div>

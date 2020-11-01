@@ -13,6 +13,7 @@ import { TagsPage } from '../components/Tags/TagsPage';
 import { NavbarSlide } from '../components/Shared/NavBarSlide/NavbarSlide';
 import { CreateProject } from '../components/Projects/CreateProject';
 import { HomePage } from '../components/Shared/HomePage/HomePage';
+import { TaskPrint } from '../components/Tasks/TasksPrint/TaskPrint';
 
 export const AppRouter = () => {
   return (
@@ -49,6 +50,8 @@ export const AppRouter = () => {
           <Route exact path="/tasks/:taskId" component={Task} />
 
           <Route exact path="/tags" component={TagsPage} />
+
+          <Route exact path="/projects/:projectId/export" component={TaskPrint} />
 
           <Redirect to="/" />
         </Switch>

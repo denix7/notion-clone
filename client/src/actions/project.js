@@ -9,7 +9,7 @@ export const addProject = (x) => ({
   data: {
     id: Math.floor(Math.random() * 100).toString(),
     name: x,
-    date: Date.now(),
+    date: new Date().toLocaleDateString(),
     tasks: [],
   },
 });
@@ -25,14 +25,15 @@ export const deleteTask = (id) => ({
   id,
 });
 
-export const modifyTask = (projectId, taskId, name, priority, status, due) => ({
+export const modifyTask = (projectId, taskId, name, tag, status, due, priority) => ({
   type: MODIFYTASK,
   projectId,
   taskId,
   name,
-  priority,
   status,
+  tag,
   due,
+  priority
 });
 
 export const deleteProject = (id) => ({

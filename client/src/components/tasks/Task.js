@@ -13,12 +13,7 @@ export const Task = () => {
 
   const dispatch = useDispatch();
 
-  // const [inputValue, setInputValue] = useState(task.name);
   const [data, setData] = useState(task);
-  // const [data, setData] = useState({
-  //   name: '',
-  //   priority: ''
-  // })
 
   const handleInputChange = (e) => {
     setData(e.target.value);
@@ -36,9 +31,10 @@ export const Task = () => {
         projectId,
         taskId,
         data.name,
-        data.priority,
+        data.tag,
         data.status,
-        data.due
+        data.due,
+        data.priority
       )
     );
     history.push(`/projects/${projectId}/tasks`);
@@ -74,7 +70,7 @@ export const Task = () => {
                 </span>
                 Created
               </div>
-              <div className="item-value">{task?.date}</div>
+              <div className="item-value">{task.date}</div>
             </div>
             <div className="modal-item">
               <div className="item-property">
@@ -95,41 +91,63 @@ export const Task = () => {
                 </select>
               </div>
             </div>
+              
+            <div className="modal-item">
+              <div className="item-property">
+                <span>
+                  <i className="fas fa-th-list" />
+                </span>
+                Priority
+              </div>
+              <div className="item-value">
+                <select
+                  name="priority"
+                  value={data.priority}
+                  onChange={handleInputChange}
+                >
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </div>
+
             <div className="modal-item">
               <div className="item-property">
                 <span>
                   <i className="fas fa-clock" />
                 </span>
-                Priority
+                Tag
               </div>
               <div>
                 <input
                   className="input-edit"
-                  name="priority"
-                  id="input-priority"
+                  name="tag"
+                  id="input-tag"
                   type="text"
-                  value={data.priority}
+                  value={data.tag}
                   onChange={handleInputChange}
                 />
               </div>
             </div>
+
             <div id="tags-container" />
-            <div className="modal-item">
-              <div className="item-property">
-                <span>
-                  <i className="fas fa-calendar" />
-                </span>
-                Due
+              <div className="modal-item">
+                <div className="item-property">
+                  <span>
+                    <i className="fas fa-calendar" />
+                  </span>
+                  Due
+                </div>
+                <input
+                  type="date"
+                  name="due"
+                  id="input-date"
+                  className="item-value input-edit"
+                  value={data.due}
+                  onChange={handleInputChange}
+                />
               </div>
-              <input
-                type="date"
-                name="due"
-                id="input-date"
-                className="item-value input-edit"
-                value={data.due}
-                onChange={handleInputChange}
-              />
-            </div>
             <button
               type="submit"
               id="btn-update-task"

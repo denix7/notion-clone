@@ -6,10 +6,7 @@ import { addTask } from '../../actions/project';
 export const CreateTask = () => {
   const [inputValue, setInputValue] = useState('');
 
-  // const projects = useSelector((state) => state.project);
   const { projectId } = useParams();
-
-  // const tasks2 = projects.find((item) => item.id === projectId).tasks;
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
@@ -40,7 +37,8 @@ export const CreateTask = () => {
           onChange={handleInputChange}
         />
         <button className="btn btn-primary" type="submit">
-          Save
+          <span><i className="fas fa-plus-circle"></i></span>
+          Add
         </button>
       </form>
     </div>

@@ -43,7 +43,7 @@
   } 
  
   div.menu{
-      display: none;
+      /* display: none; */
   }
 
   div.btn-plus{
@@ -264,11 +264,11 @@
 }
 
 .btn-primary{
-  background-color: var(--blue-color);
+  background-color: var(--primary-color);
 }
 
 .btn-primary:hover{
-  background-color: var(--hover-blue);
+  background-color: var(--primary-colorH);
 }
 
 .btn-secondary{
@@ -702,7 +702,7 @@ select{
 
 
 
-      Navbar Silde
+      /* Navbar Silde */
 
 .settings {
   background-color: var(--bg-menu);

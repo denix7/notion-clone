@@ -5,6 +5,7 @@
 
 html{
   --primary-color: #F96D24;
+  --primary-colorH: rgb(248, 150, 97);
   --secondary-color: #FFFFFF;
   --margin-color: rgb(100, 111, 117);
   --hover-gris: #474C50;
@@ -35,4 +36,47 @@ body{
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+.black{
+  color: black;
+}
+
+
+/* PDF */
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+
+@media print {
+  html, body {
+    color: black;
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@media print {
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: auto;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 20mm;
+}
+
+@media print {
+  @page { size: landscape; }
+}
+
+.none{
+  display: none;
 }

@@ -2,23 +2,26 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { TaskCard } from '../TaskCard/TaskCard';
 import { CreateTask } from '../CreateTask';
-import { style } from './Task.module.css';
+import style from './Tasks.module.css';
 
 export const Tasks = ({ tasks, filtered }) => {
   return (
     <>
-      <div className={style}>
+    <div className="container">
+      <div className={style.container}>
         <CreateTask />
       </div>
+
       <div className="card-container">
         {filtered.length === 0
           ? tasks.map((task) => {
-              return <TaskCard task={task} key={task.id} />;
-            })
+            return <TaskCard task={task} key={task.id} />;
+          })
           : filtered.map((task) => {
-              return <TaskCard task={task} key={task.id} />;
-            })}
+            return <TaskCard task={task} key={task.id} />;
+          })}
       </div>
+    </div>
     </>
   );
 };

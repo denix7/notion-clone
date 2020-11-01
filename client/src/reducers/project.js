@@ -15,7 +15,7 @@ const projects = (state = initialData, action) => {
               ...item.tasks,
               {
                 name: action.x,
-                date: Date.now(),
+                date: new Date().toLocaleDateString(),
                 id: Math.floor(Math.random() * 100).toString(),
                 status: 'Pending',
                 due: '',
@@ -33,9 +33,10 @@ const projects = (state = initialData, action) => {
             return {
               ...task,
               name: action.name,
-              priority: action.priority,
               status: action.status,
               due: action.due,
+              tag: action.tag,
+              priority: action.priority
             };
           }
           return task;

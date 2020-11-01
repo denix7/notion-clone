@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Tasks } from './Tasks/Tasks';
 import { MenuTasks } from './MenuTasks';
-import { TagsSlide } from '../Shared/TagsSlide/TagsSlide';
 // import data from '../../data/tasksData';
 
 export const TasksPage = () => {
@@ -28,7 +27,7 @@ export const TasksPage = () => {
   return (
     <div className="container">
       <MenuTasks filterItems={filterItems} />
-      <TagsSlide />
+      {/* <TagsSlide /> */}
 
       <Tasks tasks={data} filtered={tasksFilters} />
     </div>

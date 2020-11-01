@@ -1,0 +1,12 @@
+.inputTask{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+.container{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
