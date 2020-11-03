@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { TaskCard } from '../TaskCard/TaskCard';
-import { CreateTask } from '../CreateTask';
+import { TaskCard } from '../TaskCard/';
+import { CreateTask } from '../CreateTask/';
 import style from './Tasks.module.css';
 
 export const Tasks = ({ tasks, filtered }) => {

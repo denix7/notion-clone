@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Tasks } from './Tasks/Tasks';
-import { MenuTasks } from './MenuTasks';
+import { Tasks } from '../components/Tasks/Tasks/';
+import { MenuTasks } from '../components/Tasks/MenuTasks/MenuTasks';
 // import data from '../../data/tasksData';
 
 export const TasksPage = () => {

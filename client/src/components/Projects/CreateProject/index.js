@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addProject } from '../../actions/project';
+import { addProject } from '../../../store/actions/project';
 
 export const CreateProject = () => {
   const dispatch = useDispatch();

@@ -4,11 +4,11 @@ input[type=text] {
     background-color: var(--bg-menu);
     border: none;
     color: white;
-    width: 300px;
+    width: 200px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
   }
   
   input[type=text]:focus {
-    width: 320px;
+    width: 220px;
   }

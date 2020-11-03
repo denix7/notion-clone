@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import style from './TaskCard.module.css';
-import { deleteTask } from '../../../actions/project';
+import { deleteTask } from '../../../store/actions/project';
 
 export const TaskCard = ({ task }) => {
   const dispatch = useDispatch();

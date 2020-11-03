@@ -1,0 +1,7 @@
+/*Menu*/
+.menu{
+    display: flex;
+    padding: 1em;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--margin-color);
+}

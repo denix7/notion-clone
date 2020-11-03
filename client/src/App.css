@@ -206,27 +206,6 @@
   font-size: .875rem;
 }
 
-/*Header*/
-.nav li{
-  display: inline-flex;
-  align-items: center;
-  padding-right: 24px;
-  font-size: var(--font-size-md);
-  padding: 8px 8px;
-}
-
-.nav li:hover{
-  background-color: var(--hover-gris);
-}   
-
-/*Menu*/
-.menu{
-  display: flex;
-  padding: 1em;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--margin-color);
-}
-
 /* Plus button */
 .plus-btn{
   position: absolute;
@@ -356,60 +335,6 @@
 }
 
 
-/*Modal*/
-.modal{
-  position: fixed;
-  background-color: rgba(63, 68, 71, 0.425);
-  height: 100vh;
-  width: 100%;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-
-.modal .content{
-  min-width: 440px;
-  min-height: 480px;
-  background-color: var(--bg-color);
-  border-radius: 10px;
-  padding: 20px 50px;
-}
-
-.modal:target{
-  display: flex;
-}
-
-.modal-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-body{
-  display: block;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.modal-item{
-  display: flex;
-  flex: 1 1 auto;
-  padding: 10px;
-}
-
-.modal-item .item-property{
-  width: 160px;
-  height: 34px;
-  opacity: var(--opacity);
-}
-
-.modal-item .item-value{
-  margin-left: 13px;
-}
-
 /* Modal Add Project */
 .modal-add-project{
   position: fixed;
@@ -465,16 +390,6 @@
   padding: 8px;
   color: var(--secondary-color);
   background-color: var(--hover-gris);
-}
-
-.input-edit{
-  margin: 0;
-  border: 0 solid #e2e8f0;
-  padding: 8px;
-  margin-left: 5px;
-  color: var(--secondary-color);
-  font-size: var(--font-size-lg); 
-  background-color: var(--bg-color);
 }
 
 .input-tag{
@@ -694,26 +609,6 @@ select{
         padding: 0;
         border-bottom: 1px solid #cccccc;
       }
-
-
-
-
-
-
-
-
-      /* Navbar Silde */
-
-.settings {
-  background-color: var(--bg-menu);
-  float:left;
-  background-repeat:no-repeat;
-  width:250px;
-  margin:0px;
-  text-align: center;
-  font-size:var(--font-size-normal);
-  font-family: 'Strait', sans-serif;
-}
 
 
 /* ScrolBar  */
@@ -955,24 +850,6 @@ text-transform: uppercase;
   font-style: normal;
   font-weight: 300;
 }
-
-
-
-
-
-
-/* TASK INFO */
-.task-info{
-  margin-left: 255px;
-  width: 600px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--bg-menu);
-}
-
-
 
 
 /* Scroll */

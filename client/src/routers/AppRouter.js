@@ -5,22 +5,23 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import ProjectsPage from '../components/Projects/ProjectsPage';
-import { TasksPage } from '../components/Tasks/TasksPage';
-import { Navbar } from '../components/Shared/Navbar/Navbar';
-import { Task } from '../components/Tasks/Task';
-import { TagsPage } from '../components/Tags/TagsPage';
-import { NavbarSlide } from '../components/Shared/NavBarSlide/NavbarSlide';
-import { CreateProject } from '../components/Projects/CreateProject';
-import { HomePage } from '../components/Shared/HomePage/HomePage';
-import { TaskPrint } from '../components/Tasks/TasksPrint/TaskPrint';
 
-export const AppRouter = () => {
+import ProjectsPage from '../views/ProjectsPage';
+import { TasksPage } from '../views/TasksPage';
+import { TagsPage } from '../views/TagsPage';
+import { Navbar } from '../components/Shared/Navbar/';
+import { NavbarSlide } from '../components/Shared/NavBarSlide/';
+import { Task } from '../components/Tasks/TaskForm/';
+import { CreateProject } from '../components/Projects/CreateProject/';
+import { HomePage } from '../components/Shared/HomePage/';
+import { TaskPrint } from '../components/Tasks/TasksPrint/';
+
+const AppRouter = () => {
   return (
     <Router>
       <div>
         <Navbar />
-
+        {/* <Button/> */}
         <NavbarSlide />
 
         <Switch>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addTask } from '../../actions/project';
+import { addTask } from '../../../store/actions/project';
 
 export const CreateTask = () => {
   const [inputValue, setInputValue] = useState('');

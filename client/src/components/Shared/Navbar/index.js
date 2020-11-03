@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import styles from './Navbar.module.css';
 
 export const Navbar = () => {
   return (
     <div>
       <header>
-        <ul className="nav">
+        <ul className={styles.nav}>
           <Link to="/">
             <span>
               <i className="fas fa-book" />

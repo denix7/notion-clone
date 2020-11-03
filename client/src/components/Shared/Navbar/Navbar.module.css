@@ -1,0 +1,19 @@
+
+/*Header*/
+
+ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav li{
+    display: inline-flex;
+    align-items: center;
+    padding-right: 24px;
+    font-size: var(--font-size-md);
+    padding: 8px 8px;
+  }
+  
+  .nav li:hover{
+    background-color: var(--hover-gris);
+  } 

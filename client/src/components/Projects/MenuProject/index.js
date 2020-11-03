@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { InputSearch } from '../Shared/InputSearch/InputSearch';
+import { InputSearch } from '../../Shared/InputSearch/';
+import styles from './MenuProject.module.css';
 
 const MenuProject = () => {
   return (
     <div>
-      <div className="menu">
+      <div className={styles.menu}>
         <div>
           <InputSearch />
         </div>
@@ -43,7 +44,7 @@ const MenuProject = () => {
           >
             <span>
               <i className="fas fa-plus-circle" />
-            </span>{' '}
+            </span>
             Add Project
           </Link>
         </div>

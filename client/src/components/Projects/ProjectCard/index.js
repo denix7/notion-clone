@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteProject } from '../../actions/project';
+import { deleteProject } from '../../../store/actions/project';
 
 const ProjectItem = ({ project }) => {
   const dispatch = useDispatch();

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { modifyTask } from '../../actions/project';
+import { modifyTask } from '../../../store/actions/project';
+import styles from './index.module.css';
 
 export const Task = () => {
   const { taskId, projectId } = useParams();
@@ -47,13 +48,13 @@ export const Task = () => {
         save(e);
       }}
     >
-      <div className="task-info">
+      <div className={styles.taskInfo}>
         <div className="content" id="content-description-task">
-          <div className="modal-header">
+          <div className={styles.modalHeader}>
             <div>
               <h2>{data.name}</h2>
               <input
-                className="input-edit"
+                className={styles.inputEdit}
                 name="name"
                 id="input-name"
                 type="text"
@@ -62,24 +63,24 @@ export const Task = () => {
               />
             </div>
           </div>
-          <div className="modal-body">
-            <div className="modal-item">
-              <div className="item-property">
+          <div className={styles.modalBody}>
+            <div className={styles.modalItem}>
+              <div className={styles.itemProperty}>
                 <span>
                   <i className="fas fa-clock" />
                 </span>
                 Created
               </div>
-              <div className="item-value">{task.date}</div>
+              <div className={styles.itemValue}>{task.date}</div>
             </div>
-            <div className="modal-item">
-              <div className="item-property">
+            <div className={styles.modalItem}>
+              <div className={styles.itemProperty}>
                 <span>
                   <i className="fas fa-th-list" />
                 </span>
                 Status
               </div>
-              <div className="item-value">
+              <div className={styles.itemValue}>
                 <select
                   name="status"
                   value={data.status}
@@ -92,14 +93,14 @@ export const Task = () => {
               </div>
             </div>
               
-            <div className="modal-item">
-              <div className="item-property">
+            <div className={styles.modalItem}>
+              <div className={styles.itemProperty}>
                 <span>
                   <i className="fas fa-th-list" />
                 </span>
                 Priority
               </div>
-              <div className="item-value">
+              <div className={styles.itemValue}>
                 <select
                   name="priority"
                   value={data.priority}
@@ -112,8 +113,8 @@ export const Task = () => {
               </div>
             </div>
 
-            <div className="modal-item">
-              <div className="item-property">
+            <div className={styles.modalItem}>
+              <div className={styles.itemProperty}>
                 <span>
                   <i className="fas fa-clock" />
                 </span>
@@ -121,7 +122,7 @@ export const Task = () => {
               </div>
               <div>
                 <input
-                  className="input-edit"
+                  className={styles.inputEdit}
                   name="tag"
                   id="input-tag"
                   type="text"
@@ -132,8 +133,8 @@ export const Task = () => {
             </div>
 
             <div id="tags-container" />
-              <div className="modal-item">
-                <div className="item-property">
+              <div className={styles.modalItem}>
+                <div className={styles.itemProperty}>
                   <span>
                     <i className="fas fa-calendar" />
                   </span>
@@ -143,7 +144,8 @@ export const Task = () => {
                   type="date"
                   name="due"
                   id="input-date"
-                  className="item-value input-edit"
+                  className={styles.itemValue}
+                  className={styles.inputEdit}
                   value={data.due}
                   onChange={handleInputChange}
                 />
