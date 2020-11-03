@@ -1,7 +1,7 @@
 package com.example.tasks.demo.repositories;
 
 import java.util.UUID;
-import java.util.List;
+import java.util.Collection;
 
 import com.example.tasks.demo.model.Task;
 
@@ -11,7 +11,7 @@ public interface TaskDao {
 
     int addTask(Task task);
 
-    List<Task> selectAllTasks();
+    Collection<Task> selectAllTasks();
 
     Task selectTaskById(int id);
 

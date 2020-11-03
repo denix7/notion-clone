@@ -20,15 +20,6 @@ public class Task implements Serializable{
     private String description;
     @Column(name="status")
     private String status;
-
-//    @Id
-//    @GeneratedValue(generator = "UUID")
-//    @GenericGenerator(
-//            name = "UUID",
-//            strategy = "org.hibernate.id.UUIDGenerator"
-//    )
-//    @Column(name = "uuid3", updatable = false, nullable = false)
-
     @Type(type = "uuid-char")
     private UUID uuid;
     @Column(name = "entry")

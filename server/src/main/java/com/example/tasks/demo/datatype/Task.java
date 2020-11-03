@@ -5,7 +5,10 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
+import java.util.List;
+import com.example.tasks.demo.datatype.Tag;
 
 public class Task {
     private int id;
@@ -17,6 +20,11 @@ public class Task {
     private LocalDateTime end;
     private String due;
     private Priority priority;
+    private List<Tag> tags;
+
+    public Task() {
+        List<Tag> tags = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -88,5 +96,13 @@ public class Task {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }
