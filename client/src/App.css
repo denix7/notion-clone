@@ -1,20 +1,20 @@
 /*Navigation*/
-.nav{
+/* .nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 45px;
   padding: 10px 70px;
-}
+} */
 
-.nav-item {
+/* .nav-item {
   width: calc(var(--nav-size) * 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.icon-button{
+/* .icon-button{
   --button-size: calc(var(--nav-size) * 0.5);
   border-radius: 50%;
   transition: filter 300ms;
@@ -22,7 +22,7 @@
 
 .icon-button:hover{
   filter: brightness(1.2);
-}
+} */
 
 
 @media (max-width: 414){
@@ -136,6 +136,30 @@
 
 .mb-5{
   margin-bottom: 3em;
+}
+
+.ml-5{
+  margin-left: 3em;
+}
+
+.mr-1{
+  margin-right: 3em;
+}
+
+.mt-1{
+  margin-top: 2px;
+}
+
+.mb-1{
+  margin-bottom: 2px;
+}
+
+.ml-1{
+  margin-left: 2px;
+}
+
+.mr-1{
+  margin-right: 2px;
 }
 
 /*Align*/
@@ -336,7 +360,7 @@
 
 
 /* Modal Add Project */
-.modal-add-project{
+/* .modal-add-project{
   position: fixed;
   background-color: rgba(63, 68, 71, 0.425);
   height: 100vh;
@@ -381,7 +405,7 @@
 
 .modal-add-project .modal-item .item-property{
   opacity: var(--opacity);
-}
+} */
 
 /*Inputs*/
 .input-new{
@@ -523,11 +547,6 @@ select{
           100% {opacity:1;}
           0% {opacity:0;}
       }
-
-
-
-
-
 
       /* Dropdown */
 
@@ -876,12 +895,6 @@ body::-webkit-scrollbar-thumb {
 .overflow-x-scroll::-webkit-scrollbar-thumb {
   background: #8D47D0;
 }
-
-
-
-
-
-
 
 
 

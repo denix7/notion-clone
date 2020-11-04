@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import styles from './NavbarSlide.module.css'
 
 export const NavbarSlide = () => {
   const projects = useSelector((state) => state.project);
+  console.log(projects);
 
   return (
     <div>
       <nav className="main-menu">
-        <div className="settings" />
-        <div className="scrollbar" id="style-1">
-          <ul>
+        <div className={styles.settings} />
+        <div className={styles.scrollbar} id="style-1">
+          <ul className={styles.ul}>
             {projects.map((project) => {
               return (
                 <li className="darkerli" key={project.id}>

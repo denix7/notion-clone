@@ -3,13 +3,11 @@ import { useSelector } from 'react-redux';
 import ProjectCard from '../ProjectCard/';
 // import data from '../../data/projectsData';
 
-const Projects = () => {
-  const projects = useSelector((state) => state.project);
-
+const Projects = ({projects, removeProject}) => {
   return (
     <div className="card-container" id="projects">
       {projects.map((project) => {
-        return <ProjectCard key={project.id} project={project} />;
+        return <ProjectCard key={project.id} project={project} removeProject={removeProject} />;
       })}
     </div>
   );

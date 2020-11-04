@@ -25,7 +25,7 @@ export const Navbar = () => {
                 Stats
               </NavLink>
             </li>
-            <label htmlFor="options" className="dropdown">
+            <label className="dropdown">
               <div className="dd-button">
                 <span>
                   <i className="fas fa-ellipsis-h" />

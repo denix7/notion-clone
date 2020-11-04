@@ -15,21 +15,21 @@ export const MenuTasks = ({ filterItems }) => {
         <div>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary mr-1"
             onClick={() => filterItems('Pending')}
           >
             Pending
           </button>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary mr-1"
             onClick={() => filterItems('Doing')}
           >
             Doing
           </button>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary mr-1"
             onClick={() => filterItems('Done')}
           >
             Done
@@ -45,7 +45,7 @@ export const MenuTasks = ({ filterItems }) => {
 
 
         <div>
-          <label htmlFor="filter" className="dropdown">
+          <label className="dropdown">
             <div className="dd-button">
               <span>
                 <i className="fas fa-filter" />
@@ -62,11 +62,11 @@ export const MenuTasks = ({ filterItems }) => {
             </ul>
           </label>
 
-          <label htmlFor="sort" className="dropdown">
+          <label className="dropdown">
             <div className="dd-button">
               <span>
                 <i className="fas fa-sort-alpha-up" />
-                Sort
+                  Sort
               </span>
             </div>
 

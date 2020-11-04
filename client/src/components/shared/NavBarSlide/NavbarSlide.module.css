@@ -1,5 +1,8 @@
  /* Navbar Silde */
-
+ .ul {
+   display: block;
+ }
+ 
  .settings {
     /* height: 150px; */
     background-color: var(--bg-menu);

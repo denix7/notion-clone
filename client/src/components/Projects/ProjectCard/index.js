@@ -1,22 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { deleteProject } from '../../../store/actions/project';
 
-const ProjectItem = ({ project }) => {
-  const dispatch = useDispatch();
-
-  const remove = (id) => {
-    dispatch(deleteProject(id));
-  };
-
+const ProjectItem = ({ project, removeProject }) => {
   return (
     <div>
       <a
         role="button"
         className="card-delete-project"
-        onClick={() => remove(project.id)}
+        onClick={() => removeProject(project.id)}
         onKeyDown=""
       >
         <span>

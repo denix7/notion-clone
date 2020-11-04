@@ -80,3 +80,7 @@ a {
 .none{
   display: none;
 }
+
+i {
+  margin: 1px 10px 1px 1px;
+}

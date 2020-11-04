@@ -5,13 +5,13 @@ import styles from './MenuProject.module.css';
 
 const MenuProject = () => {
   return (
-    <div>
+    <div className="container">
       <div className={styles.menu}>
         <div>
           <InputSearch />
         </div>
         <div>
-          <label htmlFor="filter" className="dropdown">
+          <label className="dropdown">
             <input type="checkbox" className="dd-input" id="test" />
 
             <ul className="dd-menu">
@@ -21,7 +21,7 @@ const MenuProject = () => {
             </ul>
           </label>
 
-          <label htmlFor="sort" className="dropdown">
+          <label className="dropdown">
             <div className="dd-button">
               <span>
                 <i className="fas fa-sort-alpha-up" />
