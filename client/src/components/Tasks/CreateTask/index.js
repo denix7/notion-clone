@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { addTask } from '../../../store/actions/project';
 
-export const CreateTask = () => {
+export const CreateTask = ({saveTask}) => {
   const [inputValue, setInputValue] = useState('');
-
-  const { projectId } = useParams();
-  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -17,7 +11,7 @@ export const CreateTask = () => {
     e.preventDefault();
 
     if (inputValue.trim().length > 3) {
-      dispatch(addTask(projectId, e.target.task.value));
+      saveTask(e.target.task.value);
       setInputValue(' ');
     }
   };

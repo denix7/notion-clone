@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../components/Tasks/Tasks/';
 import { MenuTasks } from '../components/Tasks/MenuTasks/MenuTasks';
-// import data from '../../data/tasksData';
+import { deleteTask } from '../store/actions/project';
+import { addTask } from '../store/actions/project';
 
 export const TasksPage = () => {
   const { projectId } = useParams();
   const projects = useSelector((state) => state.project);
+  const dispatch = useDispatch();
+
   const project = projects.find((item) => item.id === projectId);
+
+  const removeTask = (id) => {
+    dispatch(deleteTask(id));
+  };
+
+  const saveTask = (title) => {
+    dispatch(addTask(projectId, title));
+  };
 
   const data = [...project.tasks];
 
@@ -29,7 +40,7 @@ export const TasksPage = () => {
       <MenuTasks filterItems={filterItems} />
       {/* <TagsSlide /> */}
 
-      <Tasks tasks={data} filtered={tasksFilters} />
+      <Tasks tasks={data} removeTask={removeTask} saveTask={saveTask} filtered={tasksFilters} />
     </div>
   );
 };

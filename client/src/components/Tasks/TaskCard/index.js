@@ -1,24 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
 import style from './TaskCard.module.css';
-import { deleteTask } from '../../../store/actions/project';
 
-export const TaskCard = ({ task }) => {
-  const dispatch = useDispatch();
-
-  const remove = (id) => {
-    dispatch(deleteTask(id));
-  };
-
+export const TaskCard = ({ task, removeTask }) => {
   return (
     <div>
       <div className={style.buttonDelete}>
         <a
           role="button"
-          onClick={() => remove(task.id)}
-          onKeyDown={() => remove(task.id)}
+          onClick={() => removeTask(task.id)}
+          onKeyDown={() => removeTask(task.id)}
         >
           <span>
             <i id="delete" className="text-red fas fa-trash" />
