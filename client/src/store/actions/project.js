@@ -25,15 +25,9 @@ export const deleteTask = (id) => ({
   id,
 });
 
-export const modifyTask = (projectId, taskId, name, tag, status, due, priority) => ({
+export const modifyTask = (payload) => ({
   type: MODIFYTASK,
-  projectId,
-  taskId,
-  name,
-  status,
-  tag,
-  due,
-  priority
+  payload
 });
 
 export const deleteProject = (id) => ({

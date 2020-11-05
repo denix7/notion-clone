@@ -3,21 +3,15 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { modifyTask } from '../../../store/actions/project';
 import styles from './index.module.css';
+import { connect } from 'react-redux';
 
-export const Task = () => {
-  const { taskId, projectId } = useParams();
-  const history = useHistory();
+function Task ({task, setTask}) {
+  const { projectId } = useParams();
+   const history = useHistory();
 
-  const projects = useSelector((state) => state.project);
-  const project = projects.find((item) => item.id === projectId);
-  const task = project.tasks.find((item) => item.id === taskId);
-
-  const dispatch = useDispatch();
-
-  const [data, setData] = useState(task);
+   const [data, setData] = useState(task);
 
   const handleInputChange = (e) => {
-    setData(e.target.value);
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -26,21 +20,18 @@ export const Task = () => {
 
   const save = (e) => {
     e.preventDefault();
-    // if(data.trim().length > 3){
-    dispatch(
-      modifyTask(
-        projectId,
-        taskId,
-        data.name,
-        data.tag,
-        data.status,
-        data.due,
-        data.priority
-      )
-    );
+    task = {
+      id: task.id,
+      name: data.name,
+      tag: data.tag,
+      status: data.status,
+      due: data.due,
+      priority: data.priority
+    }
+
+    setTask(task);
     history.push(`/projects/${projectId}/tasks`);
-    // }
-  };
+  }
 
   return (
     <form
@@ -161,7 +152,28 @@ export const Task = () => {
         </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Task;
+function mapStateToProps(state, ownProps) {
+  const projects = state.project;
+  const {projectId} = ownProps.match.params;
+  const {taskId} = ownProps.match.params;
+
+  const project = projects.find((item) => item.id === projectId);
+  const task = project.tasks.find((item) => item.id === taskId);
+
+  return {task};
+}
+
+function mapDispatchToProps(dispatch) {
+  function setTask(task) {
+    dispatch(
+      modifyTask(task)
+    )
+  }
+
+  return {setTask};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task);

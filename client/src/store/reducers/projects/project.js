@@ -33,14 +33,14 @@ function modifyTask(state, action) {
   return state.map((project) => ({
     ...project,
     tasks: project.tasks.map((task) => {
-      if (task.id === action.taskId) {
+      if (task.id === action.payload.id) {
         return {
           ...task,
-          name: action.name,
-          status: action.status,
-          due: action.due,
-          tag: action.tag,
-          priority: action.priority
+          name: action.payload.name,
+          status: action.payload.status,
+          due: action.payload.due,
+          tag: action.payload.tag,
+          priority: action.payload.priority
         };
       }
       return task;
