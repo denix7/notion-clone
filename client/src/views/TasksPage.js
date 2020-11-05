@@ -18,7 +18,7 @@ export const TasksPage = () => {
   };
 
   const saveTask = (title) => {
-    dispatch(addTask(projectId, title));
+    dispatch(addTask({projectId : projectId, taskTitle: title}));
   };
 
   const data = [...project.tasks];

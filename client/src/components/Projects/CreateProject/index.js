@@ -9,7 +9,7 @@ export const CreateProject = () => {
 
   const save = (e) => {
     e.preventDefault();
-    dispatch(addProject(e.target.project.value));
+    dispatch(addProject({title: e.target.project.value}));
     history.push('/projects');
   };
 

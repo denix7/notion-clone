@@ -4,20 +4,14 @@ const ADDTASK = 'ADDTASK';
 const DELETETASK = 'DELETETASK';
 const MODIFYTASK = 'MODIFYTASK';
 
-export const addProject = (x) => ({
+export const addProject = (payload) => ({
   type: ADD,
-  data: {
-    id: Math.floor(Math.random() * 100).toString(),
-    name: x,
-    date: new Date().toLocaleDateString(),
-    tasks: [],
-  },
+  payload
 });
 
-export const addTask = (id, x) => ({
+export const addTask = (payload) => ({
   type: ADDTASK,
-  id,
-  x,
+  payload
 });
 
 export const deleteTask = (id) => ({

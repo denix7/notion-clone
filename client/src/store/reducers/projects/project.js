@@ -1,7 +1,15 @@
 const initialData = [];
 
 function addProject(state, action) {
-  return [...state, action.data];
+  return [
+      ...state, 
+      {
+        id: Math.floor(Math.random() * 100).toString(),
+        name: action.payload.title,
+        date: new Date().toLocaleDateString(),
+        tasks: []
+      }
+    ];
 }
 
 function deleteProject(state, action) {
@@ -10,13 +18,13 @@ function deleteProject(state, action) {
 
 function addTask(state, action) {
   return state.map((item) => {
-    if (item.id === action.id) {
+    if (item.id === action.payload.projectId) {
       return {
         ...item,
         tasks: [
           ...item.tasks,
           {
-            name: action.x,
+            name: action.payload.taskTitle,
             date: new Date().toLocaleDateString(),
             id: Math.floor(Math.random() * 100).toString(),
             status: 'Pending',
