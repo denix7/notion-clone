@@ -1,7 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import ProjectCard from '../ProjectCard/';
-// import data from '../../data/projectsData';
 
 const Projects = ({projects, removeProject}) => {
   return (

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tasks } from '../components/Tasks/Tasks/';
-import { MenuTasks } from '../components/Tasks/MenuTasks/MenuTasks';
-import { deleteTask } from '../store/actions/project';
-import { addTask } from '../store/actions/project';
+import { Tasks } from '../Components/Tasks/Tasks/';
+import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
+import { deleteTask } from '../Store/reducers/projects/action';
+import { addTask } from '../Store/reducers/projects/action';
 
 export const TasksPage = () => {
   const { projectId } = useParams();

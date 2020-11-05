@@ -1,15 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addProject } from '../../../store/actions/project';
+import { addProject } from '../../Store/reducers/projects/action';
+import { connect } from 'react-redux';
 
-export const CreateProject = () => {
-  const dispatch = useDispatch();
+function CreateProject({setProject}) {
   const history = useHistory();
-
+  
   const save = (e) => {
     e.preventDefault();
-    dispatch(addProject({title: e.target.project.value}));
+    setProject({title: e.target.project.value});
     history.push('/projects');
   };
 
@@ -31,4 +30,16 @@ export const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+function mapStateToProps(state) {
+  return null;
+}
+
+function mapDispatchToProps(dispatch) {
+  function setProject(project) {
+    dispatch(addProject(project))
+  }
+
+  return {setProject};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

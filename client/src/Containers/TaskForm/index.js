@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { modifyTask } from '../../../store/actions/project';
+import { modifyTask } from '../../Store/reducers/projects/action';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
 
 function Task ({task, setTask}) {
   const { projectId } = useParams();
-   const history = useHistory();
+  const history = useHistory();
 
    const [data, setData] = useState(task);
 

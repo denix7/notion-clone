@@ -5,7 +5,6 @@ import styles from './NavbarSlide.module.css'
 
 export const NavbarSlide = () => {
   const projects = useSelector((state) => state.project);
-  console.log(projects);
 
   return (
     <div>
