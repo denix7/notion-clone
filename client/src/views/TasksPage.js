@@ -5,6 +5,7 @@ import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
 import { deleteTask } from '../Store/reducers/tasks/action';
 import { addTask } from '../Store/reducers/tasks/action';
+import { busquedaAxc } from '../Store/reducers/tasks/action';
 
 export const TasksPage = () => {
   // const { projectId } = useParams();
@@ -39,10 +40,17 @@ export const TasksPage = () => {
     setTaskFilters(newTasks);
   };
 
+
+  function getData() {
+    dispatch(busquedaAxc())
+  }
+
   return (
     <div className="container">
       <MenuTasks filterItems={filterItems} />
       {/* <TagsSlide /> */}
+
+      <button onClick={getData}>GetData</button>
 
       <Tasks tasks={data} removeTask={removeTask} saveTask={saveTask} filtered={tasksFilters} />
     </div>

@@ -27,6 +27,13 @@ function deleteTask(state, action) {
     tasks: [...state.tasks.filter((task) => task.id !== action.id)]}
 }
 
+function loadTasks(state, action) {
+  return {
+    ...state,
+    tasks: action.data
+  }
+}
+
 export default function tasks (state = initialData, action) {
   switch (action.type) {
     case 'ADDTASK':
@@ -35,6 +42,8 @@ export default function tasks (state = initialData, action) {
       return modifyTask(state, action);
     case 'DELETETASK':
       return deleteTask(state, action);
+    case 'BUSCAR':
+      return loadTasks(state, action);
     default:
       return state;
   }
