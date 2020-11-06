@@ -7,7 +7,6 @@ import { deleteProject } from '../Store/reducers/projects/action';
 function ProjectsPage() {
   const projects = useSelector(state => state.project)
   const dispatch = useDispatch();
-  console.log('STATE', projects)
 
   const removeProject = (id) => {
     dispatch(deleteProject(id));

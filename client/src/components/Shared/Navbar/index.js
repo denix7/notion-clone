@@ -25,6 +25,11 @@ export const Navbar = () => {
                 Stats
               </NavLink>
             </li>
+            <li className="title">
+              <NavLink activeClassName="active" exact to="/tasks">
+                Tasks
+              </NavLink>
+            </li>
             <label className="dropdown">
               <div className="dd-button">
                 <span>

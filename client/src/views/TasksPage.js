@@ -3,25 +3,29 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
-import { deleteTask } from '../Store/reducers/projects/action';
-import { addTask } from '../Store/reducers/projects/action';
+import { deleteTask } from '../Store/reducers/tasks/action';
+import { addTask } from '../Store/reducers/tasks/action';
 
 export const TasksPage = () => {
-  const { projectId } = useParams();
-  const projects = useSelector((state) => state.project);
+  // const { projectId } = useParams();
+  const data = useSelector((state) => state.task.tasks);
   const dispatch = useDispatch();
-
-  const project = projects.find((item) => item.id === projectId);
 
   const removeTask = (id) => {
     dispatch(deleteTask(id));
   };
 
   const saveTask = (title) => {
-    dispatch(addTask({projectId : projectId, taskTitle: title}));
-  };
+    dispatch(addTask({
+      id : Math.floor(Math.random() * 100).toString(), 
+      name: title,
+      tag: '',
+      status: '',
+      due: '',
+      priority: ''
 
-  const data = [...project.tasks];
+    }));
+  };
 
   const [tasksFilters, setTaskFilters] = useState(data);
 

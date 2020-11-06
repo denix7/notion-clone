@@ -5,7 +5,7 @@ import styles from './index.module.css';
 import { connect } from 'react-redux';
 
 function Task ({task, setTask}) {
-  const { projectId } = useParams();
+  // const { projectId } = useParams();
   const history = useHistory();
 
    const [data, setData] = useState(task);
@@ -29,7 +29,7 @@ function Task ({task, setTask}) {
     }
 
     setTask(task);
-    history.push(`/projects/${projectId}/tasks`);
+    history.push(`/tasks`);
   }
 
   return (
@@ -155,12 +155,12 @@ function Task ({task, setTask}) {
 }
 
 function mapStateToProps(state, ownProps) {
-  const projects = state.project;
-  const {projectId} = ownProps.match.params;
+  const tasks = state.task.tasks;
+  // const {projectId} = ownProps.match.params;
   const {taskId} = ownProps.match.params;
 
-  const project = projects.find((item) => item.id === projectId);
-  const task = project.tasks.find((item) => item.id === taskId);
+  // const project = projects.find((item) => item.id === projectId);
+  const task = tasks.find((item) => item.id === taskId);
 
   return {task};
 }

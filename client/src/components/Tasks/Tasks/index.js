@@ -13,13 +13,19 @@ export const Tasks = ({ tasks, filtered, removeTask, saveTask }) => {
       </div>
 
       <div className="card-container">
-        {filtered.length === 0
+        {
+            tasks.map((task) => {
+              return <TaskCard task={task} removeTask={removeTask} key={task.id} />;
+          })
+        }
+
+        {/* {filtered.length === 0
           ? tasks.map((task) => {
             return <TaskCard task={task} removeTask={removeTask} key={task.id} />;
           })
           : filtered.map((task) => {
             return <TaskCard task={task} removeTask={removeTask} key={task.id} />;
-          })}
+          })} */}
       </div>
     </div>
     </>

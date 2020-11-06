@@ -17,7 +17,7 @@ export const TaskCard = ({ task, removeTask }) => {
           </span>
         </a>
       </div>
-      <Link className="btn" to={`./tasks/${task.id}`}>
+      <Link className="btn" to={`/tasks/${task.id}`}>
         <div className={style.card}>
           <div className="flex-between">
             <div className={style.title}>{task.name}</div>
