@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 import { modifyTask } from '../../Store/reducers/projects/action';
+import { useParams, useHistory } from 'react-router-dom';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
 

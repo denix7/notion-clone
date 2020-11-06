@@ -4,6 +4,11 @@ const ADDTASK = 'ADDTASK';
 const DELETETASK = 'DELETETASK';
 const MODIFYTASK = 'MODIFYTASK';
 
+/**
+ * Add a Project
+ * @param {Object} payload - The object Project
+ * @return {Object} - The action to add a project
+ */
 export const addProject = (payload) => ({
   type: ADD,
   payload
