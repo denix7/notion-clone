@@ -3,12 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
-import { deleteTask } from '../Store/reducers/tasks/action';
+import { deleteTask, setTasks } from '../Store/reducers/tasks/action';
 import { addTask } from '../Store/reducers/tasks/action';
-import { busquedaAxc } from '../Store/reducers/tasks/action';
+import { loadTasks } from '../Store/reducers/tasks/action';
 
 export const TasksPage = () => {
-  // const { projectId } = useParams();
   const data = useSelector((state) => state.task.tasks);
   const dispatch = useDispatch();
 
@@ -42,7 +41,8 @@ export const TasksPage = () => {
 
 
   function getData() {
-    dispatch(busquedaAxc())
+    console.log('dispatch');
+    dispatch(loadTasks())
   }
 
   return (

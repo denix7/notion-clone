@@ -20,7 +20,7 @@ export const TaskCard = ({ task, removeTask }) => {
       <Link className="btn" to={`/tasks/${task.id}`}>
         <div className={style.card}>
           <div className="flex-between">
-            <div className={style.title}>{task.name}</div>
+            <div className={style.title}>{task.title}</div>
           </div>
           <div className={style.date}>{task.date}</div>
 

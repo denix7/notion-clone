@@ -42,7 +42,8 @@ export default function tasks (state = initialData, action) {
       return modifyTask(state, action);
     case 'DELETETASK':
       return deleteTask(state, action);
-    case 'BUSCAR':
+    case 'SETTASKS':
+      console.log('SETTASKS');
       return loadTasks(state, action);
     default:
       return state;

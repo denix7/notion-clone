@@ -1,17 +1,22 @@
-import actions from './action';
+import actions, { setTasks } from './action';
+import axios from "axios";
 
-async function loadTasks(state, action, dispatch) {
+export const cargarData = (state, action, dispatch) => {
     axios('https://jsonplaceholder.typicode.com/posts')
         .then((response) => {
-    dispatch(busqueda(response.data))
+            console.log(response)
+            dispatch(setTasks(response.data))
   })
 }
 
-export default function taskMiddleware(dispatch, getState) {
+export default function taskMiddleware(store , state) {
+    const {dispatch} = store;
+    console.log(dispatch, 'DISPATCH')
     return (next) => (action) => {
         switch(action.type) {
-            case actions.loadTasks:
-                loadTasks(getState(), action, dispatch);
+            case 'LOADTASKS':
+                console.log('LOAD')
+                cargarData(state, action, dispatch);
             default:
                 next(action);
         }
