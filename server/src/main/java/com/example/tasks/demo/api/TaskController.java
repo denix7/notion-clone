@@ -1,24 +1,23 @@
 package com.example.tasks.demo.api;
 
-import com.example.tasks.demo.dtos.TaskDTO;
 import com.example.tasks.demo.dtos.NewTaskDTO;
+import com.example.tasks.demo.dtos.TaskDTO;
+import com.example.tasks.demo.exceptions.TaskNotFoundException;
+import com.example.tasks.demo.services.Service;
 import com.example.tasks.demo.services.TaskService;
-import java.util.Collection;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
-import com.example.tasks.demo.services.Service;
-
-import com.example.tasks.demo.exceptions.TaskNotFoundException;
-import java.net.URI;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.Collection;
 
 @RequestMapping("api/v1/tasks")
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 public class TaskController {
     @Autowired
     private final Service<TaskDTO, NewTaskDTO> taskService;
@@ -29,10 +28,11 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<TaskDTO> addTask(@RequestBody NewTaskDTO task) {
+    public TaskDTO addTask(@RequestBody NewTaskDTO task) {
         TaskDTO taskDTO = taskService.create(task);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(taskDTO.getId()).toUri();
-        return ResponseEntity.created(location).build();
+        //return ResponseEntity.created(location).build();
+        return taskDTO;
     }
 
     @GetMapping
@@ -46,7 +46,8 @@ public class TaskController {
     }
 
     @PutMapping(path = "{id}")
-    public int updateTask(@PathVariable("id") UUID id, @NonNull @RequestBody TaskDTO task) {
+    public int updateTask(@PathVariable("id") int id, @NonNull @RequestBody NewTaskDTO task) {
+        System.out.println(task.toString());
         return taskService.updateTaskById(id, task);
     }
 

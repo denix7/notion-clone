@@ -11,6 +11,7 @@ public class TaskToTaskDTOMapper implements Mapper <Task, TaskDTO> {
         taskDTO.setDescription(task.getDescription());
         taskDTO.setId(task.getId());
         taskDTO.setPriority(task.getPriority());
+        taskDTO.setStatus(task.getStatus());
 
         return taskDTO;
     }

@@ -1,7 +1,6 @@
 package com.example.tasks.demo.services;
 
 import java.util.Collection;
-import java.util.UUID;
 import java.util.Optional;
 
 public interface Service<Type, TypeNew> {
@@ -13,6 +12,6 @@ public interface Service<Type, TypeNew> {
 
     boolean delete(int id);
 
-    int updateTaskById(UUID id, Type task);
+    int updateTaskById(int id, TypeNew task);
 
 }

@@ -1,9 +1,11 @@
-import axios from 'axios';
 const ADDTASK = 'ADDTASK';
 const DELETETASK = 'DELETETASK';
 const MODIFYTASK = 'MODIFYTASK';
 const SETTASKS = 'SETTASKS';
 const LOADTASKS = 'LOADTASKS';
+const POSTTASK = 'POSTTASK';
+const PUTTASK = 'PUTTASK';
+const DELETETASKASYNC = 'DELETETASKASYNC';
 
 export const addTask = (payload) => ({
   type: ADDTASK,
@@ -28,5 +30,20 @@ export const setTasks = (data) => ({
 
 export const loadTasks = () => ({
   type: LOADTASKS,
-  // data
-})
+});
+
+export const postTask = (payload) => ({
+  type: POSTTASK,
+  payload
+});
+
+export const putTask = (id, payload) => ({
+  type: PUTTASK,
+  id,
+  payload
+});
+
+export const deleteTaskAsync = (id) => ({
+  type: DELETETASKASYNC,
+  id,
+});

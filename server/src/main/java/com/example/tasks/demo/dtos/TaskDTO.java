@@ -1,17 +1,13 @@
 package com.example.tasks.demo.dtos;
 
 import com.example.tasks.demo.model.Priority;
+import com.example.tasks.demo.model.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.Column;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class TaskDTO {
     private int id;
     private String description;
-    private String status;
+    private Status status;
     private int tagsCantity;
     private Priority priority;
 
@@ -21,7 +17,7 @@ public class TaskDTO {
 
     public TaskDTO(
             @JsonProperty("description") String description,
-            @JsonProperty("status") String status) {
+            @JsonProperty("status") Status status) {
         this.id = id;
         this.description = description;
         this.status = status;
@@ -43,11 +39,11 @@ public class TaskDTO {
         this.description = description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

@@ -2,6 +2,7 @@ package com.example.tasks.demo.repositories;
 import com.example.tasks.demo.datatype.Task;
 import com.example.tasks.demo.datatype.Tag;
 import com.example.tasks.demo.model.Priority;
+import com.example.tasks.demo.model.Status;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -34,6 +35,8 @@ public class TaskRepository implements Repository<Task> {
     public Task create(Task task) {
         int id = ++ID_GENERATOR;
         task.setId(id);
+        task.setPriority(Priority.M);
+        task.setStatus(Status.PENDING);
         TASKS.add(task);
         return task;
     }
@@ -49,5 +52,11 @@ public class TaskRepository implements Repository<Task> {
     @Override
     public boolean delete(int id) {
         return TASKS.removeIf(task -> task.getId() == id);
+    }
+
+    @Override
+    public Task update(int id, Task object) {
+        object.setId(id);
+        return TASKS.set(id-1, object);
     }
 }

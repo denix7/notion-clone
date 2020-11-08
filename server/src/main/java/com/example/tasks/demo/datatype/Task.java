@@ -1,19 +1,17 @@
 package com.example.tasks.demo.datatype;
 
 import com.example.tasks.demo.model.Priority;
-import org.hibernate.annotations.Type;
+import com.example.tasks.demo.model.Status;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.UUID;
 import java.util.List;
-import com.example.tasks.demo.datatype.Tag;
+import java.util.UUID;
 
 public class Task {
     private int id;
     private String description;
-    private String status;
+    private Status status;
     private UUID uuid;
     private LocalDateTime entry;
     private LocalDateTime start;
@@ -42,11 +40,11 @@ public class Task {
         this.description = description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

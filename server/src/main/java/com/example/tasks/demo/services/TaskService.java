@@ -1,29 +1,19 @@
 package com.example.tasks.demo.services;
 
-import com.example.tasks.demo.repositories.TaskDao;
-import com.example.tasks.demo.model.Priority;
-//import com.example.tasks.demo.model.Task;
+import com.example.tasks.demo.datatype.Task;
+import com.example.tasks.demo.dtos.NewTaskDTO;
+import com.example.tasks.demo.dtos.TaskDTO;
+import com.example.tasks.demo.repositories.Repository;
+import com.example.tasks.demo.services.mappers.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-//import org.springframework.stereotype.Service;
-import com.example.tasks.demo.services.Service;
-import com.example.tasks.demo.repositories.Repository;
-import com.example.tasks.demo.dtos.TaskDTO;
-
-import com.example.tasks.demo.datatype.Task;
-import com.example.tasks.demo.dtos.TaskDTO;
-import com.example.tasks.demo.dtos.NewTaskDTO;
-import com.example.tasks.demo.services.mappers.Mapper;
-
 import java.util.stream.Collectors;
+
+//import com.example.tasks.demo.model.Task;
+//import org.springframework.stereotype.Service;
 
 @Component
 public class TaskService implements Service<TaskDTO, NewTaskDTO> {
@@ -77,8 +67,11 @@ public class TaskService implements Service<TaskDTO, NewTaskDTO> {
     }
 
     @Override
-    public int updateTaskById(UUID id, TaskDTO task) {
+    public int updateTaskById(int id, NewTaskDTO task) {
         //return taskDao.updateTaskById(id, task);
+        if(repository.update(id, newTaskDTOToTaskMapper.map(task)) != null){
+            return 1;
+        }
         return 0;
     }
 

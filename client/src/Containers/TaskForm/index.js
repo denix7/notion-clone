@@ -3,12 +3,15 @@ import { modifyTask } from '../../Store/reducers/projects/action';
 import { useParams, useHistory } from 'react-router-dom';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
+import { putTask } from '../../Store/reducers/tasks/action';
 
 function Task ({task, setTask}) {
   // const { projectId } = useParams();
   const history = useHistory();
+  // console.log(task)
 
    const [data, setData] = useState(task);
+   console.log(data, 'DATA');
 
   const handleInputChange = (e) => {
     setData({
@@ -20,14 +23,9 @@ function Task ({task, setTask}) {
   const save = (e) => {
     e.preventDefault();
     task = {
-      id: task.id,
-      name: data.name,
-      tag: data.tag,
-      status: data.status,
-      due: data.due,
-      priority: data.priority
+      id: data.id,
+      description: data.description,
     }
-
     setTask(task);
     history.push(`/tasks`);
   }
@@ -42,13 +40,13 @@ function Task ({task, setTask}) {
         <div className="content" id="content-description-task">
           <div className={styles.modalHeader}>
             <div>
-              <h2>{data.name}</h2>
+              <h2>{data.description}</h2>
               <input
                 className={styles.inputEdit}
-                name="name"
-                id="input-name"
+                name="description"
+                id="input-description"
                 type="text"
-                value={data.name}
+                value={data.description}
                 onChange={handleInputChange}
               />
             </div>
@@ -156,20 +154,15 @@ function Task ({task, setTask}) {
 
 function mapStateToProps(state, ownProps) {
   const tasks = state.task.tasks;
-  // const {projectId} = ownProps.match.params;
-  const {taskId} = ownProps.match.params;
-
-  // const project = projects.find((item) => item.id === projectId);
-  const task = tasks.find((item) => item.id === taskId);
+  const {taskId} = ownProps.match.params;  
+  const task = tasks.find((item) => item.id.toString() === taskId);
 
   return {task};
 }
 
 function mapDispatchToProps(dispatch) {
   function setTask(task) {
-    dispatch(
-      modifyTask(task)
-    )
+    dispatch(putTask(task.id, task))
   }
 
   return {setTask};

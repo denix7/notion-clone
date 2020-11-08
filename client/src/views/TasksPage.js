@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
-import { deleteTask, setTasks } from '../Store/reducers/tasks/action';
+import { deleteTask, setTasks, postTask, deleteTaskAsync } from '../Store/reducers/tasks/action';
 import { addTask } from '../Store/reducers/tasks/action';
 import { loadTasks } from '../Store/reducers/tasks/action';
 
 export const TasksPage = () => {
   const data = useSelector((state) => state.task.tasks);
+  console.log(data, 'DATA')
   const dispatch = useDispatch();
 
   const removeTask = (id) => {
-    dispatch(deleteTask(id));
+    dispatch(deleteTaskAsync(id));
   };
 
   const saveTask = (title) => {
-    dispatch(addTask({
-      id : Math.floor(Math.random() * 100).toString(), 
-      name: title,
-      tag: '',
-      status: '',
-      due: '',
-      priority: ''
-
+    console.log('SAVETASK')
+    dispatch(postTask({
+      description: title,
     }));
   };
 
@@ -39,18 +35,19 @@ export const TasksPage = () => {
     setTaskFilters(newTasks);
   };
 
-
   function getData() {
-    console.log('dispatch');
     dispatch(loadTasks())
   }
+
+  useEffect(() => {
+    getData();
+  }, [loadTasks]);
+
 
   return (
     <div className="container">
       <MenuTasks filterItems={filterItems} />
       {/* <TagsSlide /> */}
-
-      <button onClick={getData}>GetData</button>
 
       <Tasks tasks={data} removeTask={removeTask} saveTask={saveTask} filtered={tasksFilters} />
     </div>

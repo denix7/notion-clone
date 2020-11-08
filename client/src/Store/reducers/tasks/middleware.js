@@ -1,11 +1,39 @@
-import actions, { setTasks } from './action';
+import actions, { setTasks,addTask, modifyTask, deleteTask } from './action';
 import axios from "axios";
 
-export const cargarData = (state, action, dispatch) => {
-    axios('https://jsonplaceholder.typicode.com/posts')
+export const loadData = (state, action, dispatch) => {
+    axios.get('http://localhost:8081/api/v1/tasks')
+        .then((response) => {
+            dispatch(setTasks(response.data))
+  })
+}
+
+export const postTask = (state, action, dispatch) => {
+    console.log(action, 'POST TASK')
+    console.log(action.payload, 'POST TASK PAYLOD')
+    axios.post('http://localhost:8081/api/v1/tasks', action.payload)
         .then((response) => {
             console.log(response)
-            dispatch(setTasks(response.data))
+            dispatch(addTask(response.data))
+  });
+}
+
+export const putTask = (state, action, dispatch) => {
+    console.log(action, "PUT TASK ACTION")
+    console.log(action.payload, "PUT TASK PAYLOAD")
+    // const {id} = action.payload;
+    axios.put(`http://localhost:8081/api/v1/tasks/` + action.id, action.payload)
+    .then((response) => {
+        console.log(response, "PUT")
+        dispatch(modifyTask(response.data))
+    });
+}
+
+export const removeTask = (state, action, dispatch) => {
+    axios.delete('http://localhost:8081/api/v1/tasks/' + action.id)
+        .then((response) => {
+            console.log(response, 'DELETE TASK REDUCER')
+            dispatch(deleteTask(action.id))
   })
 }
 
@@ -15,8 +43,13 @@ export default function taskMiddleware(store , state) {
     return (next) => (action) => {
         switch(action.type) {
             case 'LOADTASKS':
-                console.log('LOAD')
-                cargarData(state, action, dispatch);
+                loadData(state, action, dispatch);
+            case 'POSTTASK':
+                postTask(state, action, dispatch);
+            case 'PUTTASK':
+                putTask(state, action, dispatch);
+            case 'DELETETASKASYNC':
+                removeTask(state, action, dispatch);
             default:
                 next(action);
         }

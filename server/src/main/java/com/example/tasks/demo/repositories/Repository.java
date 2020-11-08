@@ -11,4 +11,6 @@ public interface Repository <Type> {
     Type create(Type object);
 
     boolean delete(int id);
+
+    Type update(int id, Type object);
 }
