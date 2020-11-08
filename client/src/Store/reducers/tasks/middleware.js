@@ -9,19 +9,13 @@ export const loadData = (state, action, dispatch) => {
 }
 
 export const postTask = (state, action, dispatch) => {
-    console.log(action, 'POST TASK')
-    console.log(action.payload, 'POST TASK PAYLOD')
     axios.post('http://localhost:8081/api/v1/tasks', action.payload)
         .then((response) => {
-            console.log(response)
             dispatch(addTask(response.data))
   });
 }
 
 export const putTask = (state, action, dispatch) => {
-    console.log(action, "PUT TASK ACTION")
-    console.log(action.payload, "PUT TASK PAYLOAD")
-    // const {id} = action.payload;
     axios.put(`http://localhost:8081/api/v1/tasks/` + action.id, action.payload)
     .then((response) => {
         console.log(response, "PUT")
@@ -32,7 +26,6 @@ export const putTask = (state, action, dispatch) => {
 export const removeTask = (state, action, dispatch) => {
     axios.delete('http://localhost:8081/api/v1/tasks/' + action.id)
         .then((response) => {
-            console.log(response, 'DELETE TASK REDUCER')
             dispatch(deleteTask(action.id))
   })
 }

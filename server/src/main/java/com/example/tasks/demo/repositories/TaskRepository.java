@@ -1,16 +1,11 @@
 package com.example.tasks.demo.repositories;
-import com.example.tasks.demo.datatype.Task;
 import com.example.tasks.demo.datatype.Tag;
+import com.example.tasks.demo.datatype.Task;
 import com.example.tasks.demo.model.Priority;
 import com.example.tasks.demo.model.Status;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class TaskRepository implements Repository<Task> {
@@ -56,7 +51,6 @@ public class TaskRepository implements Repository<Task> {
 
     @Override
     public Task update(int id, Task object) {
-        object.setId(id);
-        return TASKS.set(id-1, object);
+        return null;
     }
 }
