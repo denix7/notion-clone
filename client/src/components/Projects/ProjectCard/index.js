@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
+/**
+ * Display a single Project Card
+ * @param  {} project Object type
+ * @param  {} removeProject function type
+ */
+
 const ProjectItem = ({ project, removeProject }) => {
   return (
     <div>

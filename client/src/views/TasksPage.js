@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
 import { postTask, deleteTaskAsync } from '../Store/reducers/tasks/action';
-import { addTask } from '../Store/reducers/tasks/action';
 import { loadTasks } from '../Store/reducers/tasks/action';
 
 export const TasksPage = () => {

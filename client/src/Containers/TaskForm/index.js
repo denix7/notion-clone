@@ -4,6 +4,12 @@ import styles from './index.module.css';
 import { connect } from 'react-redux';
 import { putTask } from '../../Store/reducers/tasks/action';
 
+/**
+ * Display a form to show and edit a task
+ * @param  {} task Object type
+ * @param  {} setTask function type
+ */
+
 function Task ({task, setTask}) {
   const history = useHistory();
 

@@ -4,6 +4,14 @@ import { TaskCard } from '../TaskCard/';
 import { CreateTask } from '../CreateTask/';
 import style from './Tasks.module.css';
 
+/**
+ * Display a list of Tasks
+ * @param  {} task Array type
+ * @param  {} filtered Array type
+ * @param  {} removeTask function type
+ * @param  {} saveTask function type
+ */
+
 export const Tasks = ({ tasks, filtered, removeTask, saveTask }) => {
   return (
     <>

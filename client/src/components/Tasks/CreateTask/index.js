@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+/**
+ * @param  {} saveTask function type
+ */
+
 export const CreateTask = ({saveTask}) => {
   const [inputValue, setInputValue] = useState('');
 

@@ -3,6 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { addProject } from '../../Store/reducers/projects/action';
 import { connect } from 'react-redux';
 
+/**
+ * Display an input form to create a new project
+ * @param  {} setProject function type
+ */
+
 function CreateProject({setProject}) {
   const history = useHistory();
   

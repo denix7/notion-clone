@@ -7,6 +7,12 @@ const POSTTASK = 'POSTTASK';
 const PUTTASK = 'PUTTASK';
 const DELETETASKASYNC = 'DELETETASKASYNC';
 
+/**
+ * Add a Project
+ * @param {Object} payload - The object Task
+ * @return {Object} - The action to add a Task
+ */
+
 export const addTask = (payload) => ({
   type: ADDTASK,
   payload

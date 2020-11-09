@@ -4,6 +4,11 @@ import { Link, useParams } from 'react-router-dom';
 import { InputSearch } from '../../Shared/InputSearch/';
 import styles from './MenuTasks.module.css';
 
+/**
+ * Display a Menu in task page
+ * @param  {} filterItems function type
+ */
+
 export const MenuTasks = ({ filterItems }) => {
   const { projectId } = useParams();
 

@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import style from './TaskCard.module.css';
 
+/**
+ * Display a single Task card
+ * @param  {} task Object type
+ * @param  {} removeTask function type
+ */
+
 export const TaskCard = ({ task, removeTask }) => {
   return (
     <div>
