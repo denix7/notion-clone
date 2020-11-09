@@ -4,12 +4,32 @@ import com.example.tasks.demo.model.Priority;
 import com.example.tasks.demo.model.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+
 public class TaskDTO {
     private int id;
     private String description;
     private Status status;
     private int tagsCantity;
     private Priority priority;
+    private LocalDateTime entry;
+    private LocalDateTime due;
+
+    public LocalDateTime getEntry() {
+        return entry;
+    }
+
+    public void setEntry(LocalDateTime entry) {
+        this.entry = entry;
+    }
+
+    public LocalDateTime getDue() {
+        return due;
+    }
+
+    public void setDue(LocalDateTime due) {
+        this.due = due;
+    }
 
     public TaskDTO () {
 
@@ -61,5 +81,18 @@ public class TaskDTO {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskDTO{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", tagsCantity=" + tagsCantity +
+                ", priority=" + priority +
+                ", entry=" + entry +
+                ", due=" + due +
+                '}';
     }
 }

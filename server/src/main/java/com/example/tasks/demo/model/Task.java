@@ -1,12 +1,11 @@
 package com.example.tasks.demo.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import org.hibernate.annotations.Type;
 import java.io.Serializable;
-
-import java.util.UUID;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name="task")
@@ -19,7 +18,7 @@ public class Task implements Serializable{
     @Column(name="description")
     private String description;
     @Column(name="status")
-    private String status;
+    private Status status;
     @Type(type = "uuid-char")
     private UUID uuid;
     @Column(name = "entry")
@@ -29,7 +28,7 @@ public class Task implements Serializable{
     @Column(name = "end")
     private LocalDateTime end;
     @Column(name = "due")
-    private String due;
+    private LocalDateTime due;
     @Column(name = "priority")
     private Priority priority;
 //    private ArrayList<UUID> depends;
@@ -41,7 +40,7 @@ public class Task implements Serializable{
 
     public Task(
                 @JsonProperty("description") String description,
-                @JsonProperty("status") String status) {
+                @JsonProperty("status") Status status) {
         this.id = id;
         this.description = description;
         this.status = status;
@@ -71,11 +70,11 @@ public class Task implements Serializable{
         this.description = description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -103,11 +102,11 @@ public class Task implements Serializable{
         this.end = end;
     }
 
-    public String getDue() {
+    public LocalDateTime getDue() {
         return due;
     }
 
-    public void setDue(String due) {
+    public void setDue(LocalDateTime due) {
         this.due = due;
     }
 
@@ -117,5 +116,20 @@ public class Task implements Serializable{
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", uuid=" + uuid +
+                ", entry=" + entry +
+                ", start=" + start +
+                ", end=" + end +
+                ", due='" + due + '\'' +
+                ", priority=" + priority +
+                '}';
     }
 }

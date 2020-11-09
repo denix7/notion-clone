@@ -16,10 +16,9 @@ export const postTask = (state, action, dispatch) => {
 }
 
 export const putTask = (state, action, dispatch) => {
-    axios.put(`http://localhost:8081/api/v1/tasks/` + action.id, action.payload)
-    .then((response) => {
-        console.log(response, "PUT")
-        dispatch(modifyTask(response.data))
+    axios.put('http://localhost:8081/api/v1/tasks/' + action.id, action.payload)
+        .then((response) => {
+            dispatch(modifyTask(response.data))
     });
 }
 

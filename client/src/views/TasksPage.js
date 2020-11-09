@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tasks } from '../Components/Tasks/Tasks/';
 import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
-import { deleteTask, setTasks, postTask, deleteTaskAsync } from '../Store/reducers/tasks/action';
+import { postTask, deleteTaskAsync } from '../Store/reducers/tasks/action';
 import { addTask } from '../Store/reducers/tasks/action';
 import { loadTasks } from '../Store/reducers/tasks/action';
 
@@ -17,7 +16,6 @@ export const TasksPage = () => {
   };
 
   const saveTask = (title) => {
-    console.log('SAVETASK')
     dispatch(postTask({
       description: title,
     }));

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { modifyTask } from '../../Store/reducers/projects/action';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
 import { putTask } from '../../Store/reducers/tasks/action';
 
 function Task ({task, setTask}) {
-  // const { projectId } = useParams();
   const history = useHistory();
-  // console.log(task)
 
    const [data, setData] = useState(task);
    console.log(data, 'DATA');
@@ -22,11 +19,13 @@ function Task ({task, setTask}) {
 
   const save = (e) => {
     e.preventDefault();
-    task = {
-      id: data.id,
-      description: data.description,
-    }
-    setTask(task);
+    // task = {
+    //   //id: data.id.toString(),
+    //   description: data.description,
+    //   // priority: data.priority,
+    //   // status: data.status
+    // }
+    setTask(data.id, data.description);
     history.push(`/tasks`);
   }
 
@@ -57,9 +56,9 @@ function Task ({task, setTask}) {
                 <span>
                   <i className="fas fa-clock" />
                 </span>
-                Created
+                Entry
               </div>
-              <div className={styles.itemValue}>{task.date}</div>
+              <div className={styles.itemValue}>{task.entry}</div>
             </div>
             <div className={styles.modalItem}>
               <div className={styles.itemProperty}>
@@ -74,9 +73,9 @@ function Task ({task, setTask}) {
                   value={data.status}
                   onChange={handleInputChange}
                 >
-                  <option value="Pending">Pending</option>
-                  <option value="Doing">Doing</option>
-                  <option value="Done">Done</option>
+                  <option value="PENDING">Pending</option>
+                  <option value="DOING">Doing</option>
+                  <option value="DONE">Done</option>
                 </select>
               </div>
             </div>
@@ -94,9 +93,9 @@ function Task ({task, setTask}) {
                   value={data.priority}
                   onChange={handleInputChange}
                 >
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                  <option value="Low">Low</option>
+                  <option value="M">Medium</option>
+                  <option value="H">High</option>
+                  <option value="L">Low</option>
                 </select>
               </div>
             </div>
@@ -161,8 +160,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  function setTask(task) {
-    dispatch(putTask(task.id, task))
+  function setTask(id, desc) {
+    console.log('DISPATCH', desc)
+    dispatch(putTask(id, {description: desc}))
   }
 
   return {setTask};
