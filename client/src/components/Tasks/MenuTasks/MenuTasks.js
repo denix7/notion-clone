@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
-import { InputSearch } from '../../Shared/InputSearch/';
+import { InputSearch } from 'shared/InputSearch';
 import styles from './MenuTasks.module.css';
 
 /**

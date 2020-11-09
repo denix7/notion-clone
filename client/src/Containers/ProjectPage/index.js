@@ -1,8 +1,8 @@
 import React from 'react';
-import Projects from '../Components/Projects/Projects/';
-import MenuProject from '../Components/Projects/MenuProject/';
+import Projects from 'components/Projects/Projects/';
+import MenuProject from 'components/Projects/MenuProject/';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProject } from '../Store/reducers/projects/action';
+import { deleteProject } from 'store/reducers/projects/action';
 
 function ProjectsPage() {
   const projects = useSelector(state => state.project)

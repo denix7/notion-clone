@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
-import { putTask } from '../../Store/reducers/tasks/action';
+import { putTask } from 'store/reducers/tasks/action';
 
 /**
  * Display a form to show and edit a task

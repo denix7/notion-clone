@@ -6,13 +6,13 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import ProjectsPage from '../views/ProjectsPage';
-import { TasksPage } from '../views/TasksPage';
-import { TagsPage } from '../views/TagsPage';
-import NavbarSlide from '../Containers/NavBarSlide/';
-import Task from '../Containers/TaskForm/';
-import CreateProject from '../Containers/CreateProject/';
-import { HomePage } from '../Containers/HomePage/';
+import ProjectsPage from 'containers/ProjectPage/index';
+import { TasksPage } from 'containers/TasksPage/';
+import { TagsPage } from 'containers/TagsPage/';
+import NavbarSlide from 'containers/NavBarSlide/';
+import Task from 'containers/TaskForm/';
+import CreateProject from 'containers/CreateProject/';
+import { HomePage } from 'containers/HomePage/';
 import { Navbar } from '../Components/Shared/Navbar/';
 import { TaskPrint } from '../Components/Tasks/TasksPrint/';
 

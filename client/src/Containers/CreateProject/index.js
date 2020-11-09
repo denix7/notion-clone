@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { addProject } from '../../Store/reducers/projects/action';
+import { addProject } from 'store/reducers/projects/action';
 import { connect } from 'react-redux';
 
 /**

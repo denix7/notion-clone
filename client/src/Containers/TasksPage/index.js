@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Tasks } from '../Components/Tasks/Tasks/';
-import { MenuTasks } from '../Components/Tasks/MenuTasks/MenuTasks';
-import { postTask, deleteTaskAsync } from '../Store/reducers/tasks/action';
-import { loadTasks } from '../Store/reducers/tasks/action';
+import { Tasks } from 'components/Tasks/Tasks/';
+import { MenuTasks } from 'components/Tasks/MenuTasks/MenuTasks';
+import { postTask, deleteTaskAsync } from 'store/reducers/tasks/action';
+import { loadTasks } from 'store/reducers/tasks/action';
 
 export const TasksPage = () => {
   const data = useSelector((state) => state.task.tasks);

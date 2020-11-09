@@ -1,4 +1,4 @@
-import actions, { setTasks,addTask, modifyTask, deleteTask } from './action';
+import { setTasks,addTask, modifyTask, deleteTask } from './action';
 import axios from "axios";
 
 export const loadData = (state, action, dispatch) => {

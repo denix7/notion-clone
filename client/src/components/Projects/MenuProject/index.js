@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { InputSearch } from '../../Shared/InputSearch/';
+import { InputSearch } from 'shared/InputSearch/';
 import styles from './MenuProject.module.css';
 
 const MenuProject = () => {
