@@ -80,10 +80,6 @@ public class TaskDaoHibernate implements TaskDao {
         try {
             entity.getTransaction().begin();
             entity.merge(task);
-            //entity.getTransaction().commit();
-//            entity.getTransaction().begin();
-//            Task taskRecovery = selectTaskById(id);
-//            taskRecovery.setDescription(task.getDescription());
             entity.getTransaction().commit();
             return 1;
         } catch (Exception exception) {
@@ -100,17 +96,16 @@ public class TaskDaoHibernate implements TaskDao {
 
     @Override
     public boolean deleteTaskById(int id) {
-//        try {
-////            entity.getTransaction().begin();
-////            Task task = selectTaskById(id);
-////            entity.remove(task);
-////            entity.getTransaction().commit();
-////            return true;
-////        } catch (Exception exception) {
-////            exception.printStackTrace();
-////            entity.getTransaction().rollback();
-////            return false;
-////        }
-        return false;
+        try {
+            entity.getTransaction().begin();
+            Task task = selectTaskById(id);
+            entity.remove(task);
+            entity.getTransaction().commit();
+            return true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            entity.getTransaction().rollback();
+            return false;
+        }
     }
 }

@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name="task")
 public class Task implements Serializable{
@@ -31,6 +33,9 @@ public class Task implements Serializable{
     private LocalDateTime due;
     @Column(name = "priority")
     private Priority priority;
+    @ManyToOne(fetch = LAZY)
+    private Project project;
+
 //    private ArrayList<UUID> depends;
 //    private String tag;
 
