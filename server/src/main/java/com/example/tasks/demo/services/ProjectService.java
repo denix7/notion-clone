@@ -1,8 +1,10 @@
 package com.example.tasks.demo.services;
 
 import com.example.tasks.demo.dtos.ProjectDTO;
+import com.example.tasks.demo.exceptions.ProjectNotFoundException;
 import com.example.tasks.demo.model.Project;
 import com.example.tasks.demo.repositories.ProjectRepositories;
+import com.example.tasks.demo.services.mappers.ProjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,10 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 public class ProjectService {
     private final ProjectRepositories projectRepositories;
+    private final ProjectMapper projectMapper;
 
     public ProjectDTO save(ProjectDTO projectDTO) {
-        Project project = projectRepositories.save(mapProjectDto(projectDTO));
+        Project project = projectRepositories.save(projectMapper.mapDtoProject(projectDTO));
         projectDTO.setId(project.getId());
         return projectDTO;
     }
@@ -26,18 +29,12 @@ public class ProjectService {
     public List<ProjectDTO> getAll() {
         return projectRepositories.findAll()
                 .stream()
-                .map(this::mapToDto)
+                .map(projectMapper::mapProjectToDto)
                 .collect(toList());
     }
 
-    private ProjectDTO mapToDto(Project project) {
-        return ProjectDTO.builder().title(project.getTitle())
-                        .id(project.getId())
-                        .tasksCantity(project.getTasks().size())
-                        .build();
-    }
-
-    private Project mapProjectDto(ProjectDTO projectDTO){
-        return Project.builder().title(projectDTO.getTitle()).build();
+    public ProjectDTO getProject(Long id) {
+        Project project = projectRepositories.findById(id).orElseThrow(() -> new ProjectNotFoundException("Project not found"));
+        return projectMapper.mapProjectToDto(project);
     }
 }

@@ -29,4 +29,9 @@ public class ProjectControler {
         return ResponseEntity.status(HttpStatus.OK)
                             .body(projectService.getAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProjectDTO> getProject(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(projectService.getProject(id));
+    }
 }
