@@ -17,8 +17,10 @@ export const postTask = (state, action, dispatch) => {
 }
 
 export const putTask = (state, action, dispatch) => {
-    axios.post(`${config.URL}/tasks/${action.id}`, action.payload)
+    console.log('PUTTASK', action)
+    axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
         .then((response) => {
+            console.log(response)
             dispatch(modifyTask(response.data))
     });
 }
@@ -32,7 +34,6 @@ export const removeTask = (state, action, dispatch) => {
 
 export default function taskMiddleware(store , state) {
     const {dispatch} = store;
-    console.log(dispatch, 'DISPATCH')
     return (next) => (action) => {
         switch(action.type) {
             case 'LOADTASKS':

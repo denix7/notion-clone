@@ -55,4 +55,13 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRespositories.deleteById(id);
     }
+
+    public TaskResponse updateTask(Long id, TaskRequest newTask) {
+        newTask.setTaskId(id);
+        Task taskToUpdate = taskRespositories.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
+        taskToUpdate.setDescription(newTask.getDescription());
+        taskRespositories.save(taskToUpdate);
+
+        return taskMapper.mapToDto(taskToUpdate);
+    }
 }

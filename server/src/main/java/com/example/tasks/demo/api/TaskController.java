@@ -45,4 +45,10 @@ public class TaskController {
         taskService.deleteTask(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id, @RequestBody TaskRequest taskRequest){
+        System.out.println(taskRequest + " " + id + "CONTROLLER");
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.updateTask(id, taskRequest));
+    }
 }
