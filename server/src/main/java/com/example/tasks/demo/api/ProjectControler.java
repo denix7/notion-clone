@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/projects")
+@CrossOrigin(origins="http://localhost:3000")
 @AllArgsConstructor
 @Slf4j
 public class ProjectControler {

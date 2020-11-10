@@ -1,64 +1,49 @@
 package com.example.tasks.demo.api;
 
-import com.example.tasks.demo.dtos.NewTaskDTO;
-import com.example.tasks.demo.dtos.TaskDTO;
-import com.example.tasks.demo.services.Service;
+import com.example.tasks.demo.dtos.TaskRequest;
+import com.example.tasks.demo.dtos.TaskResponse;
 import com.example.tasks.demo.services.TaskService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
-import java.util.Collection;
+import java.util.List;
 
-@RequestMapping("api/v1/tasks")
+import static org.springframework.http.ResponseEntity.status;
+
 @RestController
+@RequestMapping("/api/v1/tasks/")
+@AllArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
 public class TaskController {
-    @Autowired
-    private final Service<TaskDTO, NewTaskDTO> taskService;
 
-    @Autowired
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private final TaskService taskService;
 
     @PostMapping
-    public TaskDTO addTask(@RequestBody NewTaskDTO task) {
-        TaskDTO taskDTO = taskService.create(task);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(taskDTO.getId()).toUri();
-        //return ResponseEntity.created(location).build();
-        return taskDTO;
+    public ResponseEntity<Void> createTask(@RequestBody TaskRequest taskRequest){
+        taskService.save(taskRequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public Collection<TaskDTO> getTasks() {
-        return taskService.getAllTasks();
+    @GetMapping("/")
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
+        return status(HttpStatus.OK).body(taskService.getAllTasks());
     }
 
-    @GetMapping(path = "{uuid}")
-    public TaskDTO getTask(@PathVariable("uuid") int uuid) {
-        //return taskService.getTaskById(uuid).orElseThrow(() -> new TaskNotFoundException(uuid));
-        return taskService.getTaskById(uuid);
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskResponse> getTask(@PathVariable Long id) {
+        return status(HttpStatus.OK).body(taskService.getTask(id));
     }
 
-    @PutMapping(path = "{id}")
-    public int updateTask(@PathVariable("id") int id, @NonNull @RequestBody TaskDTO task) {
-        System.out.println(task.toString());
-        return taskService.updateTaskById(id, task);
+    @GetMapping("by-project/{id}")
+    public ResponseEntity<List<TaskResponse>> getTasksByProject(@PathVariable Long id) {
+        return status(HttpStatus.OK).body(taskService.getTasksByProject(id));
     }
 
-//    @DeleteMapping(path = "{id}")
-//    public ResponseEntity<Integer> delete(@PathVariable("id") int id) {
-//        if(!taskService.delete(id)){
-//            throw  new TaskNotFoundException(id);
-//        }
-//
-//        return new ResponseEntity<>(id, HttpStatus.OK);
-//    }
-    @DeleteMapping(path = "{id}")
-    public boolean delete(@PathVariable("id") int id) {
-        return taskService.delete(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable("id") Long id) {
+        taskService.deleteTask(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

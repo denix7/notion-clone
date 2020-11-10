@@ -1,93 +1,57 @@
 package com.example.tasks.demo.services;
 
-//import com.example.tasks.demo.datatype.Task;
-
-import com.example.tasks.demo.dtos.NewTaskDTO;
-import com.example.tasks.demo.dtos.TaskDTO;
+import com.example.tasks.demo.exceptions.ProjectNotFoundException;
+import com.example.tasks.demo.exceptions.TaskNotFoundException;
+import com.example.tasks.demo.model.Project;
 import com.example.tasks.demo.model.Task;
-import com.example.tasks.demo.services.mappers.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.example.tasks.demo.dtos.TaskRequest;
+import com.example.tasks.demo.dtos.TaskResponse;
+import com.example.tasks.demo.repositories.ProjectRepositories;
+import com.example.tasks.demo.repositories.TaskRespositories;
+import com.example.tasks.demo.services.mappers.TaskMapper;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
-//import com.example.tasks.demo.model.Task;
-//import org.springframework.stereotype.Service;
+import static java.util.stream.Collectors.toList;
 
-@Component
-public class TaskService implements Service<TaskDTO, NewTaskDTO> {
-    //private final TaskDao taskDao;
+@Service
+@AllArgsConstructor
+@Slf4j
+public class TaskService {
 
-//    @Autowired
-//    Repository<Task> repository;
+    private final TaskRespositories taskRespositories;
+    private final ProjectRepositories projectRepositories;
+    private final TaskMapper taskMapper;
 
-    @Autowired
-    Mapper<Task, TaskDTO> taskToTaskDTOMapper;
+    public void save(TaskRequest taskRequest) {
+        Project project = projectRepositories.findByTitle(taskRequest.getProjectTitle())
+                    .orElseThrow(() -> new ProjectNotFoundException(taskRequest.getProjectTitle()));
 
-//    @Autowired
-//    Mapper<NewTaskDTO, Task> newTaskDTOToTaskMapper;
-
-    @Autowired
-    Mapper<NewTaskDTO, Task> newTaskDTOToTaskEntityMapper;
-
-    @Autowired
-    Mapper<Task, TaskDTO> TaskEntityToTaskDTOMapper;
-
-    @Autowired
-    Mapper<TaskDTO, Task> TaskDTOToTaskEntityMapper;
-
-//    public TaskService(@Qualifier("hibernateDao") TaskDao taskDao) {
-//        this.taskDao = taskDao;
-//    }
-
-    @Override
-    public TaskDTO create(NewTaskDTO newTaskDTO) {
-        Task task = newTaskDTOToTaskEntityMapper.map(newTaskDTO);
-        //return TaskEntityToTaskDTOMapper.map(taskDao.addTask(task));
-
-        //Task task = taskToTaskDTOMapper.map(task);
-        //return repository.create(task);
-
-        //return taskToTaskDTOMapper.map(repository.create(newTaskDTOToTaskMapper.map(newTaskDTO)));
-
-        return null;
+        taskRespositories.save(taskMapper.map(taskRequest, project));
     }
 
-    @Override
-    public Collection<TaskDTO> getAllTasks(){
-        //return taskDao.selectAllTasks();
-        //return taskDao.selectAllTasks().stream().map(task -> taskToTaskDTOMapper.map(task)).collect(Collectors.toList());
-        //return repository.getAll().stream().map(task -> taskToTaskDTOMapper.map(task)).collect(Collectors.toList());
-        return null;
+    public TaskResponse getTask(Long id) {
+        Task task = taskRespositories.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
+        return taskMapper.mapToDto(task);
     }
 
-    @Override
-    public TaskDTO getTaskById(int id) {
-//        return taskDao.selectTaskById(id);
-        //return repository.get(id).map(task -> taskToTaskDTOMapper.map(task));
-        //return taskToTaskDTOMapper.map(taskDao.selectTaskById(id));
-        return null;
+    public List<TaskResponse> getAllTasks() {
+        return taskRespositories.findAll().stream().map(taskMapper::mapToDto)
+                            .collect(toList());
     }
 
-    @Override
-    public boolean delete(int id) {
-        //return taskDao.deleteTaskById(id);
-        //return repository.delete(id);
-        //return taskDao.deleteTaskById(id);
-        return false;
+    public List<TaskResponse> getTasksByProject(Long projectId) {
+        Project project = projectRepositories.findById(projectId)
+                            .orElseThrow(() -> new ProjectNotFoundException(projectId.toString()));
+        List<Task> tasks = taskRespositories.findAllByProject(project);
+
+        return tasks.stream().map(taskMapper::mapToDto).collect(toList());
     }
 
-    @Override
-    public int updateTaskById(int id, TaskDTO task) {
-        //return taskDao.updateTaskById(id, task);
-        //if(repository.update(id, newTaskDTOToTaskMapper.map(task)) != null){
-//            return 1;
-//        }
-//        return 0;
-        System.out.println(id + "   " + task.toString() + "////TASKSERVICE");
-        //return taskDao.updateTaskById(id, TaskDTOToTaskEntityMapper.map(task));
-
-        return 0;
+    public void deleteTask(Long id) {
+        taskRespositories.deleteById(id);
     }
-
 }

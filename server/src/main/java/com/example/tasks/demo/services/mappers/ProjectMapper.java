@@ -11,11 +11,11 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
-    @Mapping( target = "tasksCantity", expression = "java(mapTasks(project.getTasks()))")
+    @Mapping( target = "tasksQuantity", expression = "java(mapTasks(project.getTasks()))")
     ProjectDTO mapProjectToDto(Project project);
 
-    default Integer mapTasks(List<Task> tasksCantity) {
-        return tasksCantity.size();
+    default Integer mapTasks(List<Task> tasksQuantity) {
+        return tasksQuantity.size();
     }
 
     @InheritInverseConfiguration

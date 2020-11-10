@@ -1,17 +1,17 @@
 package com.example.tasks.demo.dtos;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class ProjectDTO {
-    private long id;
-    private String title;
-    private String entry;
-    private Integer tasksQuantity;
+public class TaskRequest {
+    private Long taskId;
+    private String projectTitle;
+    private String description;
+    private Instant due;
 }

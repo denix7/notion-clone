@@ -9,9 +9,9 @@ public class TaskDTOToTaskEntityMapper implements Mapper<TaskDTO, Task> {
     @Override
     public Task map(TaskDTO taskDTO) {
         Task task = new Task();
-        //task.setId(taskDTO.getId());
         task.setDescription(taskDTO.getDescription());
-        //task.setPriority(taskDTO.getPriority());
+//        task.setId(taskDTO.getId());
+//        task.setPriority(taskDTO.getPriority());
 //        task.setStatus(taskDTO.getStatus());
 //        task.setEntry(taskDTO.getEntry());
 //        task.setDue(taskDTO.getDue());
