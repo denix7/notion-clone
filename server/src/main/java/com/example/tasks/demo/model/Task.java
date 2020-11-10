@@ -1,5 +1,7 @@
 package com.example.tasks.demo.model;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
 
+@Data
 @Entity
 @Table(name="task")
 public class Task implements Serializable{
