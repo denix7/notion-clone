@@ -42,6 +42,7 @@ module.exports = {
         'react/destructuring-assignment': 'off',
         'react/self-closing-comp': 'off',
         'import/no-named-as-default': 0,
-        'import/no-named-as-default-member': 0
+        'import/no-named-as-default-member': 0,
+        'import/no-unresolved' : 0,
     }
 };

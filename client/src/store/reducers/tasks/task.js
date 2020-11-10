@@ -15,9 +15,9 @@ function modifyTask(state, action) {
     tasks: [...state.tasks.map((task) => {
     if(task.id === action.payload.id) {
       return action.payload
-    } else {
-      return task;
-    }
+    } 
+    return task;
+    
   })]}
 }
 

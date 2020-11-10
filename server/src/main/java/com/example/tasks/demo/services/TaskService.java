@@ -26,11 +26,12 @@ public class TaskService {
     private final ProjectRepositories projectRepositories;
     private final TaskMapper taskMapper;
 
-    public void save(TaskRequest taskRequest) {
+    public TaskResponse save(TaskRequest taskRequest) {
         Project project = projectRepositories.findByTitle(taskRequest.getProjectTitle())
                     .orElseThrow(() -> new ProjectNotFoundException(taskRequest.getProjectTitle()));
 
-        taskRespositories.save(taskMapper.map(taskRequest, project));
+        Task task = taskRespositories.save(taskMapper.map(taskRequest, project));
+        return taskMapper.mapToDto(task);
     }
 
     public TaskResponse getTask(Long id) {

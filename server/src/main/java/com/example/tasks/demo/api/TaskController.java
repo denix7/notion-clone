@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestController
-@RequestMapping("/api/v1/tasks/")
+@RequestMapping("api/v1/tasks/")
 @AllArgsConstructor
 @CrossOrigin(origins="http://localhost:3000")
 public class TaskController {
@@ -21,9 +21,8 @@ public class TaskController {
     private final TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<Void> createTask(@RequestBody TaskRequest taskRequest){
-        taskService.save(taskRequest);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest taskRequest){
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskRequest));
     }
 
     @GetMapping("/")

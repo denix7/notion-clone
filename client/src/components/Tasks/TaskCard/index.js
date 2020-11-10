@@ -73,6 +73,7 @@ export const TaskCard = ({ task, removeTask }) => {
 };
 
 TaskCard.propTypes = {
+  removeTask: PropTypes.function,
   task: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
