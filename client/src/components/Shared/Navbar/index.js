@@ -21,7 +21,7 @@ export const Navbar = () => {
               </NavLink>
             </li>
             <li className="title">
-              <NavLink activeClassName="active" exact to="/">
+              <NavLink activeClassName="active" exact to="/stats">
                 Stats
               </NavLink>
             </li>

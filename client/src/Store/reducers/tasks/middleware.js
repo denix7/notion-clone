@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setTasks,addTask, modifyTask, deleteTask } from './action';
+import { setTasks,addTask, modifyTask, deleteTask, setTasksByProject, addTaskByProject, deleteTaskByProject } from './action';
 import config from '../../../config';
 
 export const loadData = (state, action, dispatch) => {
@@ -17,10 +17,8 @@ export const postTask = (state, action, dispatch) => {
 }
 
 export const putTask = (state, action, dispatch) => {
-    console.log('PUTTASK', action)
     axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
         .then((response) => {
-            console.log(response)
             dispatch(modifyTask(response.data))
     });
 }
@@ -29,6 +27,27 @@ export const removeTask = (state, action, dispatch) => {
     axios.delete(`${config.URL}/tasks/${action.id}`)
         .then(() => {
             dispatch(deleteTask(action.id))
+  })
+}
+
+export const loadTasksByProject = (state, action, dispatch) => {
+    axios.get(`${config.URL}/tasks/by-project/${action.projectId}`)
+        .then((response) => {
+            dispatch(setTasksByProject(response.data))
+  })
+}
+
+export const postTaskByProject = (state, action, dispatch) => {
+    axios.post(`${config.URL}/tasks/`, action.payload)
+        .then((response) => {
+            dispatch(addTaskByProject(response.data))
+  });
+}
+
+export const removeTaskByProject = (state, action, dispatch) => {
+    axios.delete(`${config.URL}/tasks/${action.id}`)
+        .then(() => {
+            dispatch(deleteTaskByProject(action.id))
   })
 }
 
@@ -47,6 +66,15 @@ export default function taskMiddleware(store , state) {
                 break;
             case 'DELETETASKASYNC':
                 removeTask(state, action, dispatch);
+                break;
+            case 'LOADTASKSBYPROJECT':
+                loadTasksByProject(state, action, dispatch);
+                break;
+            case 'POSTTASKBYPROJECT':
+                postTaskByProject(state, action, dispatch);
+                break;
+            case 'DELETETASKBYPROJECTASYNC':
+                removeTaskByProject(state, action, dispatch);
                 break;
             default:
                 next(action);

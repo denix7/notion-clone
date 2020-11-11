@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import Projects from 'components/Projects/Projects/';
 import MenuProject from 'components/Projects/MenuProject/';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProject } from 'store/reducers/projects/action';
 import { loadProjects, deleteProjectAsync } from '../../Store/reducers/projects/action';
 
 function ProjectsPage() {

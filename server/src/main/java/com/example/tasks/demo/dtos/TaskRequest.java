@@ -12,6 +12,7 @@ import java.time.Instant;
 public class TaskRequest {
     private Long taskId;
     private String projectTitle;
+    private long projectId;
     private String description;
     private Instant due;
 }

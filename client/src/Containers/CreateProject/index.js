@@ -47,4 +47,4 @@ function mapDispatchToProps(dispatch) {
   return {setProject};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
+export default connect(null, mapDispatchToProps)(CreateProject);

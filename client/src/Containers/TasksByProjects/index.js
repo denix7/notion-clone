@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Tasks } from 'components/Tasks/Tasks/';
 import { MenuTasks } from 'components/Tasks/MenuTasks/MenuTasks';
-import { loadTasks, postTask, deleteTaskAsync } from 'store/reducers/tasks/action';
+import { loadTasksByProject, deleteTaskByProjectAsync } from 'store/reducers/tasks/action';
+import { postTaskByProject, deleteTaskByProject } from '../../Store/reducers/tasks/action';
 
-export const TasksPage = () => {
-  const data = useSelector((state) => state.task.tasks);
+export const TaskByProjects = () => {
+  useEffect(() => {
+    getData();
+  }, [loadTasksByProject]);
+  
+  const data = useSelector((state) => state.task.tasksByProject);
   const dispatch = useDispatch();
+  const {projectId} = useParams();
 
   const removeTask = (id) => {
-    dispatch(deleteTaskAsync(id));
+    dispatch(deleteTaskByProjectAsync(id));
   };
 
   const saveTask = (title) => {
-    dispatch(postTask({
-      projectTitle: 'default',
+    dispatch(postTaskByProject({
+      projectId: projectId,
       description: title,
     }));
   };
@@ -32,13 +39,8 @@ export const TasksPage = () => {
   };
 
   function getData() {
-    dispatch(loadTasks())
+    dispatch(loadTasksByProject(projectId))
   }
-
-  useEffect(() => {
-    getData();
-  }, [loadTasks]);
-
 
   return (
     <div className="container">
@@ -50,4 +52,4 @@ export const TasksPage = () => {
   );
 };
 
-export default TasksPage;
+export default TaskByProjects;

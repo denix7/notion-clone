@@ -1,5 +1,6 @@
 const initialData = {
-  tasks: []
+  tasks: [],
+  tasksByProject: []
 };
 
 function addTask(state, action) {
@@ -34,6 +35,26 @@ function setTasks(state, action) {
   }
 }
 
+function setTasksByProject(state, action) {
+  return {
+    ...state,
+    tasksByProject: action.payload
+  }
+}
+
+function addTaskByProject(state, action) {
+  return {
+    ...state,
+    tasksByProject: [...state.tasksByProject, action.payload]
+  }
+}
+
+function deleteTaskByProject(state, action) {
+  return {
+    ...state,
+    tasksByProject: [...state.tasksByProject.filter((task) => task.id !== action.id)]}
+}
+
 export default function tasks (state = initialData, action) {
   switch (action.type) {
     case 'ADDTASK':
@@ -44,6 +65,12 @@ export default function tasks (state = initialData, action) {
       return deleteTask(state, action);
     case 'SETTASKS':
       return setTasks(state, action);
+    case 'SETTASKSBYPROJECT':
+      return setTasksByProject(state, action);
+    case 'ADDTASKBYPROJECT':
+      return addTaskByProject(state, action);
+    case 'DELETETASKBYPROJECT':
+      return deleteTaskByProject(state, action);
     default:
       return state;
   }

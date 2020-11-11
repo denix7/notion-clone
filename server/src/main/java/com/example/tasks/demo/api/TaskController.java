@@ -22,7 +22,9 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest taskRequest){
-        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskRequest));
+        if(taskRequest.getProjectTitle() == null)
+            return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskRequest));
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.saveDefault(taskRequest));
     }
 
     @GetMapping("/")
@@ -48,7 +50,6 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id, @RequestBody TaskRequest taskRequest){
-        System.out.println(taskRequest + " " + id + "CONTROLLER");
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.updateTask(id, taskRequest));
     }
 }

@@ -27,12 +27,20 @@ public class TaskService {
     private final TaskMapper taskMapper;
 
     public TaskResponse save(TaskRequest taskRequest) {
+        Project project = projectRepositories.findById(taskRequest.getProjectId())
+                .orElseThrow(() -> new ProjectNotFoundException(taskRequest.getProjectId()+""));
+
+        Task task = taskRespositories.save(taskMapper.map(taskRequest, project));
+        return taskMapper.mapToDto(task);
+    }
+    public TaskResponse saveDefault(TaskRequest taskRequest) {
         Project project = projectRepositories.findByTitle(taskRequest.getProjectTitle())
                     .orElseThrow(() -> new ProjectNotFoundException(taskRequest.getProjectTitle()));
 
         Task task = taskRespositories.save(taskMapper.map(taskRequest, project));
         return taskMapper.mapToDto(task);
     }
+
 
     public TaskResponse getTask(Long id) {
         Task task = taskRespositories.findById(id).orElseThrow(() -> new TaskNotFoundException(id));

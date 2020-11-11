@@ -23,7 +23,7 @@ public class Project {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String title;
-    @OneToMany(fetch = LAZY)
+    @OneToMany(fetch = LAZY, mappedBy = "project", cascade = CascadeType.REMOVE)
     private List<Task> tasks;
     private Instant createdDate;
 }

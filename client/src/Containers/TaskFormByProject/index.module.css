@@ -1,0 +1,74 @@
+/* TASK INFO */
+.taskInfo{
+    margin-left: 255px;
+    width: 600px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-menu);
+  }
+
+  /*Modal*/
+.modal{
+    position: fixed;
+    background-color: rgba(63, 68, 71, 0.425);
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  
+  .modal .content{
+    min-width: 440px;
+    min-height: 480px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 20px 50px;
+  }
+  
+  .modal:target{
+    display: flex;
+  }
+  
+  .modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modalBody{
+    display: block;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .modalItem{
+    display: flex;
+    flex: 1 1 auto;
+    padding: 10px;
+  }
+  
+  .modalItem .itemProperty{
+    width: 160px;
+    height: 34px;
+    opacity: var(--opacity);
+  }
+  
+  .modalItem .itemValue{
+    margin-left: 13px;
+  }
+
+  .inputEdit{
+    margin: 0;
+    border: 0 solid #e2e8f0;
+    padding: 8px;
+    margin-left: 5px;
+    color: var(--secondary-color);
+    font-size: var(--font-size-lg); 
+    background-color: var(--bg-color);
+  }

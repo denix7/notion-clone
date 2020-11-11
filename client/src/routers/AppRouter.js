@@ -15,6 +15,8 @@ import CreateProject from 'containers/CreateProject/';
 import { HomePage } from 'containers/HomePage/';
 import { Navbar } from '../Components/Shared/Navbar/';
 import { TaskPrint } from '../Components/Tasks/TasksPrint/';
+import { TaskByProjects } from '../Containers/TasksByProjects';
+import TaskFormByProject from '../Containers/TaskFormByProject'
 
 const AppRouter = () => {
   return (
@@ -27,7 +29,7 @@ const AppRouter = () => {
           <Route 
             exact 
             path="/" 
-            component={HomePage} 
+            component={ProjectsPage} 
           />
 
           <Route 
@@ -51,13 +53,13 @@ const AppRouter = () => {
           <Route
             exact
             path="/projects/:projectId/tasks"
-            component={TasksPage}
+            component={TaskByProjects}
           />
 
           <Route
             exact
             path="/projects/:projectId/tasks/:taskId"
-            component={Task}
+            component={TaskFormByProject}
           />
 
           <Route 
@@ -77,6 +79,18 @@ const AppRouter = () => {
             path="/tasks/:taskId" 
             component={Task} 
           />
+          
+          <Route 
+            exact 
+            path="/projects/:projectId/export" 
+            component={TaskPrint} 
+          />
+
+          <Route 
+            exact 
+            path="/stats" 
+            component={HomePage} 
+          />
 
           <Route 
             exact 
@@ -84,11 +98,6 @@ const AppRouter = () => {
             component={TagsPage} 
           />
 
-          <Route 
-            exact 
-            path="/projects/:projectId/export" 
-            component={TaskPrint} 
-          />
 
           <Redirect to="/" />
         </Switch>

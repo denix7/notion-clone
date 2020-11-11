@@ -5,7 +5,6 @@ import config from '../../../config';
 export const loadProjects = (state, action, dispatch) => {
     axios.get(`${config.URL}/projects/`)
         .then((response) => {
-            console.log(response.data, "LOAD PROJECTS")
             dispatch(setProject(response.data))
   })
 }
@@ -13,7 +12,6 @@ export const loadProjects = (state, action, dispatch) => {
 export const postProject = (state, action, dispatch) => {
     axios.post(`${config.URL}/projects/`, action.payload)
         .then((response) => {
-            console.log(response, "POST PROJECT MIDLEWARE")
             dispatch(addProject(response.data))
   });
 }
@@ -26,10 +24,8 @@ export const removeProject = (state, action, dispatch) => {
 }
 
 // export const putTask = (state, action, dispatch) => {
-//     console.log('PUTTASK', action)
 //     axios.put(`${config.URL}/projects/${action.id}`, action.payload)
 //         .then((response) => {
-//             console.log(response)
 //             dispatch(modifyTask(response.data))
 //     });
 // }

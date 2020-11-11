@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import style from './HomePage.module.css';
+import { useDispatch } from 'react-redux';
+import { loadProjects } from '../../Store/reducers/projects/action'
+import { loadTasks } from '../../Store/reducers/tasks/action'
 
 export const HomePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadProjects())
+    dispatch(loadTasks())
+  }, [])
+  
   const projects = useSelector((state) => state.project.projects);
-  console.log(projects, "NAVBARSLIDE")
+  const tasks = useSelector((state) => state.task.tasks);
 
   let counter = 0;
   let pending = 0;
   let doing = 0;
   let done = 0;
-  projects.forEach((project) => {
-    project.tasks.forEach((element) => {
-      if (element.status === 'Pending') pending += 1;
-      if (element.status === 'Doing') doing += 1;
-      if (element.status === 'Done') done += 1;
-      counter += 1;
-    });
-  });
 
+
+  tasks.forEach((element) => {
+    if (element.status === 'Pending') pending += 1;
+    if (element.status === 'Doing') doing += 1;
+    if (element.status === 'Done') done += 1;
+    counter += 1;
+  });
+  
   return (
     <div>
       <div className={style.center}>
@@ -28,7 +38,7 @@ export const HomePage = () => {
         </div>
         <div className={style.separator} />
         <div>
-          <h1 className={style.circle}>{counter}</h1>
+          <h1 className={style.circle}>{tasks.length}</h1>
           <h3>Tasks</h3>
         </div>
       </div>

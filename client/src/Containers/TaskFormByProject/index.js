@@ -10,7 +10,7 @@ import { putTask } from 'store/reducers/tasks/action';
  * @param  {} setTask function type
  */
 
-function Task ({task, setTask}) {
+function TaskFormByProject ({task, setTask}) {
   const history = useHistory();
 
    const [data, setData] = useState(task);
@@ -31,7 +31,7 @@ function Task ({task, setTask}) {
     //   // status: data.status
     // }
     setTask(data.id, data.description);
-    history.push(`/tasks`);
+    history.push(`/projects/${task.projectId}/tasks`);
   }
 
   return (
@@ -157,7 +157,7 @@ function Task ({task, setTask}) {
 }
 
 function mapStateToProps(state, ownProps) {
-  const tasks = state.task.tasks;
+  const tasks = state.task.tasksByProject;
   const {taskId} = ownProps.match.params;  
   const task = tasks.find((item) => item.id.toString() === taskId);
 
@@ -172,4 +172,4 @@ function mapDispatchToProps(dispatch) {
   return {setTask};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Task);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskFormByProject);

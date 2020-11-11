@@ -18,7 +18,6 @@ function deleteProject(state, action) {
 }
 
 function setProject(state, action) {
-  console.log(action.payload, 'REDUCER')
   return {
     ...state,
     projects: action.payload
