@@ -7,13 +7,14 @@ import { loadTasksByProject, deleteTaskByProjectAsync } from 'store/reducers/tas
 import { postTaskByProject, deleteTaskByProject } from '../../Store/reducers/tasks/action';
 
 export const TaskByProjects = () => {
-  useEffect(() => {
-    getData();
-  }, [loadTasksByProject]);
   
   const data = useSelector((state) => state.task.tasksByProject);
   const dispatch = useDispatch();
   const {projectId} = useParams();
+  
+  useEffect(() => {
+    getData();
+  }, [projectId]);
 
   const removeTask = (id) => {
     dispatch(deleteTaskByProjectAsync(id));

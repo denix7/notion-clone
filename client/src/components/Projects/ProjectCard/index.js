@@ -21,7 +21,7 @@ const ProjectItem = ({ project, removeProject }) => {
           <i id="delete" className="text-red fas fa-trash" />
         </span>
       </a>
-      <Link to={`./projects/${project.id}/tasks`}>
+      <Link to={`/projects/${project.id}/tasks`}>
         <div className="card">
           <div className="flex-between">
             <div className="card-title">{project.title}</div>
