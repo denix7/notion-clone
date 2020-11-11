@@ -37,4 +37,8 @@ public class ProjectService {
         Project project = projectRepositories.findById(id).orElseThrow(() -> new ProjectNotFoundException("Project not found"));
         return projectMapper.mapProjectToDto(project);
     }
+
+    public void deleteTask(Long id) {
+        projectRepositories.deleteById(id);
+    }
 }

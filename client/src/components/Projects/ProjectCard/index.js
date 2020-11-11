@@ -24,9 +24,9 @@ const ProjectItem = ({ project, removeProject }) => {
       <Link to={`./projects/${project.id}/tasks`}>
         <div className="card">
           <div className="flex-between">
-            <div className="card-title">{project.name}</div>
+            <div className="card-title">{project.title}</div>
           </div>
-          <div className="card-date">{project.date}</div>
+          <div className="card-date">{project.entry}</div>
         </div>
       </Link>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { addProject } from 'store/reducers/projects/action';
+import { postProject } from 'store/reducers/projects/action';
 import { connect } from 'react-redux';
 
 /**
@@ -41,7 +41,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   function setProject(project) {
-    dispatch(addProject(project))
+    dispatch(postProject(project))
   }
 
   return {setProject};

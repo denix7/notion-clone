@@ -35,4 +35,10 @@ public class ProjectControler {
     public ResponseEntity<ProjectDTO> getProject(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(projectService.getProject(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProject(@PathVariable("id") Long id) {
+        projectService.deleteTask(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import style from './HomePage.module.css';
 
 export const HomePage = () => {
-  const projects = useSelector((state) => state.project);
+  const projects = useSelector((state) => state.project.projects);
+  console.log(projects, "NAVBARSLIDE")
 
   let counter = 0;
   let pending = 0;

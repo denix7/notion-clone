@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import styles from './NavbarSlide.module.css'
 
 export const NavbarSlide = () => {
-  const projects = useSelector((state) => state.project);
+  const projects = useSelector((state) => state.project.projects);
 
   return (
     <div>
@@ -17,7 +17,7 @@ export const NavbarSlide = () => {
                 <li className="darkerli" key={project.id}>
                   <Link to={`/projects/${project.id}/tasks`}>
                     <i className="fa fa-rocket fa-lg" />
-                    <span className="nav-text">{project.name}</span>
+                    <span className="nav-text">{project.title}</span>
                   </Link>
                 </li>
               );

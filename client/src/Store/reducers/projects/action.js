@@ -1,8 +1,9 @@
-const ADD = 'ADD';
-const DELETE = 'DELETE';
-const ADDTASK = 'ADDTASK';
-const DELETETASK = 'DELETETASK';
-const MODIFYTASK = 'MODIFYTASK';
+const ADDPROJECT = 'ADDPROJECT';
+const DELETEPROJECT = 'DELETEPROJECT';
+const SETPROJECT = 'SETPROJECT';
+const LOADPROJECTS = 'LOADPROJECTS';
+const POSTPROJECT = 'POSTPROJECT';
+const DELETEPROJECTASYNC = 'DELETEPROJECTASYNC';
 
 /**
  * Add a Project
@@ -10,26 +11,30 @@ const MODIFYTASK = 'MODIFYTASK';
  * @return {Object} - The action to add a project
  */
 export const addProject = (payload) => ({
-  type: ADD,
-  payload
-});
-
-export const addTask = (payload) => ({
-  type: ADDTASK,
-  payload
-});
-
-export const deleteTask = (id) => ({
-  type: DELETETASK,
-  id,
-});
-
-export const modifyTask = (payload) => ({
-  type: MODIFYTASK,
+  type: ADDPROJECT,
   payload
 });
 
 export const deleteProject = (id) => ({
-  type: DELETE,
+  type: DELETEPROJECT,
+  id,
+});
+
+export const setProject = (payload) => ({
+  type: SETPROJECT,
+  payload
+});
+
+export const loadProjects = () => ({
+  type: LOADPROJECTS
+});
+
+export const postProject = (payload) => ({
+  type: POSTPROJECT,
+  payload
+});
+
+export const deleteProjectAsync = (id) => ({
+  type: DELETEPROJECTASYNC,
   id,
 });
