@@ -20,12 +20,18 @@ export const HomePage = () => {
   let pending = 0;
   let doing = 0;
   let done = 0;
+  let high = 0;
+  let low = 0;
+  let medium = 0;
 
 
   tasks.forEach((element) => {
-    if (element.status === 'Pending') pending += 1;
-    if (element.status === 'Doing') doing += 1;
-    if (element.status === 'Done') done += 1;
+    if (element.status === 'PENDING') pending += 1;
+    if (element.status === 'DOING') doing += 1;
+    if (element.status === 'DONE') done += 1;
+    if (element.priority === 'H') high += 1;
+    if (element.priority === 'L') low += 1;
+    if (element.priority === 'M') medium += 1;
     counter += 1;
   });
   
@@ -52,6 +58,19 @@ export const HomePage = () => {
           <h4>Pending</h4>
           <h4>Doing</h4>
           <h4>Done</h4>
+        </div>
+        <div />
+      </div>
+      <div className={style.tasks}>
+        <div>
+          <h3 className={style.circleTasks}>{high}</h3>
+          <h3 className={style.circleTasks}>{low}</h3>
+          <h3 className={style.circleTasks}>{medium}</h3>
+        </div>
+        <div>
+          <h4>High</h4>
+          <h4>Low</h4>
+          <h4>Medium</h4>
         </div>
         <div />
       </div>

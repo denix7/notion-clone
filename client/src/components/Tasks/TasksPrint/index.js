@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useReactToPrint } from 'react-to-print';
 import { PropTypes } from 'prop-types';
@@ -8,7 +7,7 @@ class ComponentToPrint extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>{this.props.dataFromParent}</h1>
+        <h1>Todo list</h1>
         <table>
           <thead>
             <th>Description</th>
@@ -22,7 +21,7 @@ class ComponentToPrint extends React.Component {
               return (
                 <div>
                   <tr>
-                    <td>{task.name}</td>
+                    <td>{task.description}</td>
                     <td>{task.status}</td>
                     <td>{task.priority}</td>
                     <td>{task.tag}</td>
@@ -41,13 +40,8 @@ class ComponentToPrint extends React.Component {
 }
 
 export const TaskPrint = () => {
-  const { projectId } = useParams();
-  const projects = useSelector((state) => state.project);
-  const project = projects.find((item) => item.id === projectId);
+  const tasks = useSelector((state) => state.task.tasksByProject);
 
-  const tasks = [...project.tasks];
-
-  // const state = { data: "helo" }
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -60,7 +54,7 @@ export const TaskPrint = () => {
           <i className="fas fa-download"></i>Download
         </button>
       </div>
-      <ComponentToPrint dataFromParent='state' tasks={tasks} ref={componentRef} />
+      <ComponentToPrint tasks={tasks} ref={componentRef} />
     </>
   );
 };
