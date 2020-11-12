@@ -24,7 +24,7 @@ function ProjectsPage() {
 
   useEffect(() => {
     getData();
-  }, [loadProjects]);
+  }, []);
 
   return (
     <div>

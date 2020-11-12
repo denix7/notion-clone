@@ -14,19 +14,85 @@ export const TagsSlide = () => {
       <div className={style.container}>
         <Link to="/tags">
           <div className={style.tag}>
-            <span>#football</span>
+            <span>#market</span>
           </div>
         </Link>
 
         <Link to="/tags">
           <div className={style.tag}>
-            <span>#football</span>
+            <span>#market</span>
           </div>
         </Link>
 
         <Link to="/tags">
           <div className={style.tag}>
-            <span>#football</span>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#development</span>
+          </div>
+        </Link>
+
+        <Link to="/tags">
+          <div className={style.tag}>
+            <span>#market</span>
           </div>
         </Link>
       </div>

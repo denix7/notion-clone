@@ -56,7 +56,6 @@ function deleteTaskByProject(state, action) {
 }
 
 function modifyTaskByProject(state, action) {
-  console.log('MODUFY BY PROJECT', action)
   return {
     ...state,
     tasksByProject: [...state.tasksByProject.map((task) => {

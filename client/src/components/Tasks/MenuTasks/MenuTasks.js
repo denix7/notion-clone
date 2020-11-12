@@ -21,21 +21,21 @@ export const MenuTasks = ({ filterItems }) => {
           <button
             type="button"
             className="btn btn-primary mr-1"
-            onClick={() => filterItems('Pending')}
+            onClick={() => filterItems('PENDING')}
           >
             Pending
           </button>
           <button
             type="button"
             className="btn btn-primary mr-1"
-            onClick={() => filterItems('Doing')}
+            onClick={() => filterItems('DOING')}
           >
             Doing
           </button>
           <button
             type="button"
             className="btn btn-primary mr-1"
-            onClick={() => filterItems('Done')}
+            onClick={() => filterItems('DONE')}
           >
             Done
           </button>

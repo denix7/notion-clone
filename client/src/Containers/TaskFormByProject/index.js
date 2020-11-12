@@ -15,8 +15,6 @@ function TaskFormByProject ({task, setTask}) {
 
    const [data, setData] = useState(task);
 
-   console.log(data, 'DATA BACK')
-
   const handleInputChange = (e) => {
     setData({
       ...data,

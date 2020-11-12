@@ -17,10 +17,8 @@ export const postTask = (state, action, dispatch) => {
 }
 
 export const putTask = (state, action, dispatch) => {
-    console.log('PUTTASK', action)
     axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
         .then((response) => {
-            console.log(response, 'RESPONSE')
             dispatch(modifyTask(response.data))
     });
 }
@@ -54,10 +52,8 @@ export const removeTaskByProject = (state, action, dispatch) => {
 }
 
 export const putTaskByProject = (state, action, dispatch) => {
-    console.log('PUTTASKBYPROJECT', action)
     axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
         .then((response) => {
-            console.log(response, 'RESPONSE')
             dispatch(modifyTaskByProject(response.data))
             // dispatch(modifyTask(response.data))
     });

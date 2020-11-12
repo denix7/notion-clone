@@ -12,7 +12,6 @@ export const loadProjects = (state, action, dispatch) => {
 export const postProject = async (state, action, dispatch) => {
     await axios.post(`${config.URL}/projects/`, action.payload)
         .then((response) => {
-            console.log(response, "POST PROJECT")
             dispatch(addProject(response.data))
   });
 }

@@ -17,7 +17,7 @@ export const NavbarSlide = () => {
                 <li className="darkerli" key={project.id}>
                   <Link to={`/projects/${project.id}/tasks`}>
                     <i className="fa fa-rocket fa-lg" />
-                    <span className="nav-text">{project.title}</span>
+                    <span className="nav-text">{project.title} ({project.tasksQuantity})</span>
                   </Link>
                 </li>
               );

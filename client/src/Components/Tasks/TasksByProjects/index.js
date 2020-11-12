@@ -29,11 +29,11 @@ export const TasksByProjects = ({ tasks, filtered, removeTask, saveTask }) => {
         }
 
         {/* {filtered.length === 0
-          ? tasksByProjects.map((task) => {
-            return <TaskCard task={task} removeTask={removeTask} key={task.id} />;
+          ? tasks.map((task) => {
+            return <TaskCardByProject task={task} removeTask={removeTask} key={task.id} />;
           })
           : filtered.map((task) => {
-            return <TaskCard task={task} removeTask={removeTask} key={task.id} />;
+            return <TaskCardByProject task={task} removeTask={removeTask} key={task.id} />;
           })} */}
       </div>
     </div>

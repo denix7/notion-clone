@@ -33,35 +33,34 @@ export const TaskCard = ({ task, removeTask }) => {
           <div className={style.tags}>
             <div className={style.container}>
               <div className="flex">
+              {
+                task.tag && 
                 <span>
                   <Link to="/tags">
                     <div className={style.tag}>
-                      <span>#football</span>
+                      <span>#{task.tag}</span>
                     </div>
                   </Link>
                 </span>
-                <Link to="/tags">
-                  <div className={style.tag}>
-                    <span>#football</span>
-                  </div>
-                </Link>
-                <span>
-                  <Link to="/tags">
-                    <div className={style.tag}>
-                      <span>#football</span>
-                    </div>
-                  </Link>
-                </span>
+              }
               </div>
               <div className={style.icons}>
-                <span>
-                  5 <i className="fas fa-comment-alt" />
-                </span>
-                <span>
-                  <i className="fas fa-heart" />
-                </span>
+              {
+                task.due && 
                 <span>
                   <i className="fas fa-clock" />
+                </span>
+              }
+
+              {
+                task.status === 'DONE' &&
+                <span>
+                  <i className="done" class="fas fa-check-circle"></i>
+                </span>
+
+              }
+                <span>
+                  <i className="fas fa-heart" />
                 </span>
               </div>
             </div>
