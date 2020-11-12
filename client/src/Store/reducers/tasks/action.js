@@ -12,6 +12,8 @@ const POSTTASKBYPROJECT = 'POSTTASKBYPROJECT';
 const ADDTASKBYPROJECT = 'ADDTASKBYPROJECT';
 const DELETETASKBYPROJECT = 'DELETETASKBYPROJECT';
 const DELETETASKBYPROJECTASYNC = 'DELETETASKBYPROJECTASYNC';
+const MODIFYTASKBYPROJECT = 'MODIFYTASKBYPROJECT';
+const PUTTASKBYPROJECT = 'PUTTASKBYPROJECT';
 
 /**
  * Add a Project
@@ -88,4 +90,15 @@ export const deleteTaskByProject = (id) => ({
 export const deleteTaskByProjectAsync = (id) => ({
   type: DELETETASKBYPROJECTASYNC,
   id,
+});
+
+export const modifyTaskByProject = (payload) => ({
+  type: MODIFYTASKBYPROJECT,
+  payload
+});
+
+export const putTaskByProject = (id, payload) => ({
+  type: PUTTASKBYPROJECT,
+  id,
+  payload
 });

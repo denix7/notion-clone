@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setTasks,addTask, modifyTask, deleteTask, setTasksByProject, addTaskByProject, deleteTaskByProject } from './action';
+import { setTasks,addTask, modifyTask, deleteTask, setTasksByProject, addTaskByProject, deleteTaskByProject, modifyTaskByProject } from './action';
 import config from '../../../config';
 
 export const loadData = (state, action, dispatch) => {
@@ -17,8 +17,10 @@ export const postTask = (state, action, dispatch) => {
 }
 
 export const putTask = (state, action, dispatch) => {
+    console.log('PUTTASK', action)
     axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
         .then((response) => {
+            console.log(response, 'RESPONSE')
             dispatch(modifyTask(response.data))
     });
 }
@@ -51,6 +53,15 @@ export const removeTaskByProject = (state, action, dispatch) => {
   })
 }
 
+export const putTaskByProject = (state, action, dispatch) => {
+    console.log('PUTTASKBYPROJECT', action)
+    axios.put(`${config.URL}/tasks/${action.id}`, action.payload)
+        .then((response) => {
+            console.log(response, 'RESPONSE')
+            dispatch(modifyTaskByProject(response.data))
+    });
+}
+
 export default function taskMiddleware(store , state) {
     const {dispatch} = store;
     return (next) => (action) => {
@@ -75,6 +86,8 @@ export default function taskMiddleware(store , state) {
                 break;
             case 'DELETETASKBYPROJECTASYNC':
                 removeTaskByProject(state, action, dispatch);
+            case 'PUTTASKBYPROJECT':
+                putTaskByProject(state, action, dispatch);
                 break;
             default:
                 next(action);

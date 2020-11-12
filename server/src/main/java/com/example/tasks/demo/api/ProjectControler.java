@@ -4,11 +4,12 @@ import com.example.tasks.demo.dtos.ProjectDTO;
 import com.example.tasks.demo.services.ProjectService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("api/v1/projects")
@@ -17,7 +18,8 @@ import java.util.List;
 @Slf4j
 public class ProjectControler {
 
-    private final ProjectService projectService;
+    @Autowired
+    private final ProjectService<ProjectDTO> projectService;
 
     @PostMapping
     public ResponseEntity<ProjectDTO> createProject(@RequestBody ProjectDTO projectDTO){
@@ -26,7 +28,7 @@ public class ProjectControler {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProjectDTO>> getAllProject() {
+    public ResponseEntity<Collection<ProjectDTO>> getAllProject() {
         return ResponseEntity.status(HttpStatus.OK)
                             .body(projectService.getAll());
     }

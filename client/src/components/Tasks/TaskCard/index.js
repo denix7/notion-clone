@@ -28,7 +28,7 @@ export const TaskCard = ({ task, removeTask }) => {
           <div className="flex-between">
             <div className={style.title}>{task.description}</div>
           </div>
-          <div className={style.date}>{task.date}</div>
+          <div className={style.date}>{task.entry}</div>
 
           <div className={style.tags}>
             <div className={style.container}>

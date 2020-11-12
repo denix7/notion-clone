@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.UUID;
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -26,26 +27,24 @@ public class Task implements Serializable{
     private Long taskId;
     @Column(name="description")
     private String description;
-//    @Column(name="status")
-//    private Status status;
-//    @Type(type = "uuid-char")
-//    private UUID uuid;
+    @Column(name="status")
+    private Status status;
+    @Type(type = "uuid-char")
+    private UUID uuid;
 //    @Column(name = "entry")
-    private Instant entry;
+//    private Instant entry;
 //    @Column(name = "start")
-//    private LocalDateTime start;
+//    private Instant start;
 //    @Column(name = "end")
-//    private LocalDateTime end;
+//    private Instant end;
 //    @Column(name = "due")
 //    private Instant due;
-//    @Column(name = "priority")
-//    private Priority priority;
+    @Column(name = "priority")
+    private Priority priority;
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Project project;
-
-//    private ArrayList<UUID> depends;
-//    private String tag;
+    private String tag;
 
 //    public Task () {
 //

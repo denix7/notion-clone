@@ -25,5 +25,5 @@ public class Project {
     private String title;
     @OneToMany(fetch = LAZY, mappedBy = "project", cascade = CascadeType.REMOVE)
     private List<Task> tasks;
-    private Instant createdDate;
+    private Instant entry;
 }

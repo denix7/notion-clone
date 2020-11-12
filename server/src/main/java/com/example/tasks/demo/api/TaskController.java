@@ -4,11 +4,12 @@ import com.example.tasks.demo.dtos.TaskRequest;
 import com.example.tasks.demo.dtos.TaskResponse;
 import com.example.tasks.demo.services.TaskService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 import static org.springframework.http.ResponseEntity.status;
 
@@ -18,17 +19,19 @@ import static org.springframework.http.ResponseEntity.status;
 @CrossOrigin(origins="http://localhost:3000")
 public class TaskController {
 
+    @Autowired
     private final TaskService taskService;
 
     @PostMapping
     public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest taskRequest){
+        System.out.println("COTROLER SAVE" + taskRequest);
         if(taskRequest.getProjectTitle() == null)
             return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.saveDefault(taskRequest));
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<TaskResponse>> getAllTasks() {
+    public ResponseEntity<Collection<TaskResponse>> getAllTasks() {
         return status(HttpStatus.OK).body(taskService.getAllTasks());
     }
 
@@ -38,7 +41,7 @@ public class TaskController {
     }
 
     @GetMapping("by-project/{id}")
-    public ResponseEntity<List<TaskResponse>> getTasksByProject(@PathVariable Long id) {
+    public ResponseEntity<Collection<TaskResponse>> getTasksByProject(@PathVariable Long id) {
         return status(HttpStatus.OK).body(taskService.getTasksByProject(id));
     }
 
@@ -50,6 +53,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id, @RequestBody TaskRequest taskRequest){
+        System.out.println("UPDATE CONTROLER" + taskRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.updateTask(id, taskRequest));
     }
 }

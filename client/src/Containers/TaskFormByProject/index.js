@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
-import { putTask } from 'store/reducers/tasks/action';
+import { putTask, putTaskByProject } from 'store/reducers/tasks/action';
 
 /**
  * Display a form to show and edit a task
@@ -15,6 +15,8 @@ function TaskFormByProject ({task, setTask}) {
 
    const [data, setData] = useState(task);
 
+   console.log(data, 'DATA BACK')
+
   const handleInputChange = (e) => {
     setData({
       ...data,
@@ -24,13 +26,14 @@ function TaskFormByProject ({task, setTask}) {
 
   const save = (e) => {
     e.preventDefault();
-    // task = {
-    //   //id: data.id.toString(),
-    //   description: data.description,
-    //   // priority: data.priority,
-    //   // status: data.status
-    // }
-    setTask(data.id, data.description);
+    const task = {
+      //id: data.id.toString(),
+      description: data.description,
+      priority: data.priority,
+      status: data.status,
+      tag:data.tag
+    }
+    setTask(data.id, task);
     history.push(`/projects/${task.projectId}/tasks`);
   }
 
@@ -165,8 +168,8 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  function setTask(id, desc) {
-    dispatch(putTask(id, {description: desc}))
+  function setTask(id, task) {
+    dispatch(putTaskByProject(id, task))
   }
 
   return {setTask};

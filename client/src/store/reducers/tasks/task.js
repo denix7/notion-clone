@@ -55,6 +55,19 @@ function deleteTaskByProject(state, action) {
     tasksByProject: [...state.tasksByProject.filter((task) => task.id !== action.id)]}
 }
 
+function modifyTaskByProject(state, action) {
+  console.log('MODUFY BY PROJECT', action)
+  return {
+    ...state,
+    tasksByProject: [...state.tasksByProject.map((task) => {
+    if(task.id === action.payload.id) {
+      return action.payload
+    } 
+    return task;
+    
+  })]}
+}
+
 export default function tasks (state = initialData, action) {
   switch (action.type) {
     case 'ADDTASK':
@@ -71,6 +84,8 @@ export default function tasks (state = initialData, action) {
       return addTaskByProject(state, action);
     case 'DELETETASKBYPROJECT':
       return deleteTaskByProject(state, action);
+    case 'MODIFYTASKBYPROJECT':
+      return modifyTaskByProject(state, action);
     default:
       return state;
   }

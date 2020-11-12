@@ -9,8 +9,10 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
-    @Mapping(target = "entry", expression = "java(java.time.Instant.now())")
+//    @Mapping(target = "entry", expression = "java(java.time.Instant.now())")
     @Mapping(target = "description", source = "taskRequest.description")
+    @Mapping(target = "priority", source = "taskRequest.priority")
+    @Mapping(target = "status", source = "taskRequest.status")
     Task map(TaskRequest taskRequest, Project project);
 
     @Mapping(target = "id", source = "taskId")

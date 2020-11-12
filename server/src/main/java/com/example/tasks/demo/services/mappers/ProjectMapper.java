@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProjectMapper {
-    @Mapping( target = "tasksQuantity", expression = "java(mapTasks(project.getTasks()))")
+    @Mapping( target = "tasksQuantity", expression = "java(project.getTasks().size())")
     ProjectDTO mapProjectToDto(Project project);
 
     default Integer mapTasks(List<Task> tasksQuantity) {
@@ -20,5 +20,6 @@ public interface ProjectMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "tasks", ignore = true)
+    @Mapping(target = "entry", expression = "java(java.time.Instant.now())")
     Project mapDtoProject(ProjectDTO projectDTO);
 }
