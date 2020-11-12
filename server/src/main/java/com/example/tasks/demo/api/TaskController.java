@@ -24,7 +24,6 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest taskRequest){
-        System.out.println("COTROLER SAVE" + taskRequest);
         if(taskRequest.getProjectTitle() == null)
             return ResponseEntity.status(HttpStatus.CREATED).body(taskService.save(taskRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.saveDefault(taskRequest));
@@ -53,7 +52,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id, @RequestBody TaskRequest taskRequest){
-        System.out.println("UPDATE CONTROLER" + taskRequest);
+        System.out.println("CONTROLLER UPDATE " + taskRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.updateTask(id, taskRequest));
     }
 }

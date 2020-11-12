@@ -1,8 +1,5 @@
 package com.example.tasks.demo.datatype;
 
-import com.example.tasks.demo.model.Priority;
-import com.example.tasks.demo.model.Status;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

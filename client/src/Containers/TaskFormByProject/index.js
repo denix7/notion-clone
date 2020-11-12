@@ -31,7 +31,8 @@ function TaskFormByProject ({task, setTask}) {
       description: data.description,
       priority: data.priority,
       status: data.status,
-      tag:data.tag
+      tag:data.tag,
+      due: data.due
     }
     setTask(data.id, task);
     history.push(`/projects/${task.projectId}/tasks`);

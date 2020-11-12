@@ -1,4 +1,4 @@
-package com.example.tasks.demo.model;
+package com.example.tasks.demo.datatype;
 
 public enum Priority {
     L() {

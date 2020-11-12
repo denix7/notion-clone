@@ -1,8 +1,8 @@
 package com.example.tasks.demo.repositories;
 import com.example.tasks.demo.datatype.Tag;
 import com.example.tasks.demo.datatype.Task;
-import com.example.tasks.demo.model.Priority;
-import com.example.tasks.demo.model.Status;
+import com.example.tasks.demo.datatype.Priority;
+import com.example.tasks.demo.datatype.Status;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
