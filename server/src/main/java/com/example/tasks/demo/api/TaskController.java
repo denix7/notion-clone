@@ -52,7 +52,6 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponse> updateTask(@PathVariable("id") Long id, @RequestBody TaskRequest taskRequest){
-        System.out.println("CONTROLLER UPDATE " + taskRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.updateTask(id, taskRequest));
     }
 }

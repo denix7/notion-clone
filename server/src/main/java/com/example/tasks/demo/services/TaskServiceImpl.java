@@ -37,7 +37,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskResponse save(TaskRequest taskRequest) {
-        System.out.println(" SERVICE" + taskRequest);
         taskRequest.setPriority(Priority.M);
         taskRequest.setStatus(Status.PENDING);
 
@@ -91,6 +90,7 @@ public class TaskServiceImpl implements TaskService {
         taskToUpdate.setStatus(newTask.getStatus());
         taskToUpdate.setPriority(newTask.getPriority());
         taskToUpdate.setTag(newTask.getTag());
+
         LocalDate dueDate = LocalDate.parse(newTask.getDue());
         taskToUpdate.setDue(dueDate);
 

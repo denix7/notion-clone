@@ -28,6 +28,7 @@ function TaskFormByProject ({task, setTask}) {
     e.preventDefault();
     const task = {
       //id: data.id.toString(),
+      projectId: data.projectId,
       description: data.description,
       priority: data.priority,
       status: data.status,
@@ -137,6 +138,7 @@ function TaskFormByProject ({task, setTask}) {
                   Due
                 </div>
                 <input
+                  required
                   type="date"
                   name="due"
                   id="input-date"

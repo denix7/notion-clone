@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import style from './TaskCard.module.css';
+import style from './TaskCardByProject.module.css';
 
 /**
  * Display a single Task card
@@ -9,7 +9,7 @@ import style from './TaskCard.module.css';
  * @param  {} removeTask function type
  */
 
-export const TaskCard = ({ task, removeTask }) => {
+export const TaskCardByProject = ({ task, removeTask }) => {
   return (
     <div>
       <div className={style.buttonDelete}>
@@ -23,7 +23,7 @@ export const TaskCard = ({ task, removeTask }) => {
           </span>
         </a>
       </div>
-      <Link className="btn" to={`/tasks/edit/${task.id}`}>
+      <Link className="btn" to={`/projects/${task.projectId}/tasks/${task.id}`}>
         <div className={style.card}>
           <div className="flex-between">
             <div className={style.title}>{task.description}</div>
@@ -72,7 +72,7 @@ export const TaskCard = ({ task, removeTask }) => {
   );
 };
 
-TaskCard.propTypes = {
+TaskCardByProject.propTypes = {
   removeTask: PropTypes.function,
   task: PropTypes.shape({
     id: PropTypes.string,
@@ -82,8 +82,8 @@ TaskCard.propTypes = {
   }),
 };
 
-TaskCard.defaultProps = {
+TaskCardByProject.defaultProps = {
   task: {},
 };
 
-export default TaskCard;
+export default TaskCardByProject;

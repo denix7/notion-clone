@@ -5,8 +5,9 @@ import { Tasks } from 'components/Tasks/Tasks/';
 import { MenuTasks } from 'components/Tasks/MenuTasks/MenuTasks';
 import { loadTasksByProject, deleteTaskByProjectAsync } from 'store/reducers/tasks/action';
 import { postTaskByProject, deleteTaskByProject } from '../../Store/reducers/tasks/action';
+import { TasksByProjects } from '../../Components/Tasks/TasksByProjects';
 
-export const TaskByProjects = () => {
+export const TaskByProjectsPage = () => {
   
   const data = useSelector((state) => state.task.tasksByProject);
   const dispatch = useDispatch();
@@ -48,9 +49,9 @@ export const TaskByProjects = () => {
       <MenuTasks filterItems={filterItems} />
       {/* <TagsSlide /> */}
 
-      <Tasks tasks={data} removeTask={removeTask} saveTask={saveTask} filtered={tasksFilters} />
+      <TasksByProjects tasks={data} removeTask={removeTask} saveTask={saveTask} filtered={tasksFilters} />
     </div>
   );
 };
 
-export default TaskByProjects;
+export default TaskByProjectsPage;

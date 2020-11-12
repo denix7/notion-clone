@@ -24,13 +24,15 @@ function Task ({task, setTask}) {
 
   const save = (e) => {
     e.preventDefault();
-    // task = {
-    //   //id: data.id.toString(),
-    //   description: data.description,
-    //   // priority: data.priority,
-    //   // status: data.status
-    // }
-    setTask(data.id, data.description);
+    task = {
+      //id: data.id.toString(),
+      description: data.description,
+      priority: data.priority,
+      status: data.status,
+      tag:data.tag,
+      due: data.due
+    }
+    setTask(data.id, task);
     history.push(`/tasks`);
   }
 
@@ -133,6 +135,7 @@ function Task ({task, setTask}) {
                   Due
                 </div>
                 <input
+                  required
                   type="date"
                   name="due"
                   id="input-date"
@@ -165,8 +168,8 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  function setTask(id, desc) {
-    dispatch(putTask(id, {description: desc}))
+  function setTask(id, task) {
+    dispatch(putTask(id, task))
   }
 
   return {setTask};

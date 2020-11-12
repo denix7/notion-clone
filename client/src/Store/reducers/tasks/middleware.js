@@ -59,6 +59,7 @@ export const putTaskByProject = (state, action, dispatch) => {
         .then((response) => {
             console.log(response, 'RESPONSE')
             dispatch(modifyTaskByProject(response.data))
+            // dispatch(modifyTask(response.data))
     });
 }
 
